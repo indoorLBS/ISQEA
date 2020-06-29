@@ -1,0 +1,4 @@
+-[ ] add more comments 
+-[ ] run and check the algorithms 
+-[ ] clean up the irrelevant code
+-[ ] optimize the output file path
