@@ -1,4 +1,4 @@
 .idea/
 target/
-*.txt
+/*.txt
 *.iml
