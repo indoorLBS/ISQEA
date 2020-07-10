@@ -816,7 +816,7 @@ public class KNNQ {
     public static void main(String[] arg) throws IOException {
         KNNQ knnq = new KNNQ();
         // k
-//        String fileName = "/KNNQ_k";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/KNNQ_k";
 //        knnq.IDModel_knnq("k", fileName, 1500, 100);
 //        knnq.IDMatrix_knnq("k", fileName, 1500, 100);
 //        knnq.ICIndex_knnq("k", fileName, 1500, 100);
@@ -824,7 +824,7 @@ public class KNNQ {
 //        knnq.VIPtree_knnq("k", fileName, 1500, 100);
 
 //        // objectNum
-//        String fileName = "/KNNQ_objectNum";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/KNNQ_objectNum";
 //        knnq.IDModel_knnq("objectNum", fileName, 1500, kDefault);
 //        knnq.IDMatrix_knnq("objectNum", fileName, 1500, kDefault);
 //        knnq.ICIndex_knnq("objectNum", fileName, 1500, kDefault);
@@ -832,7 +832,7 @@ public class KNNQ {
 //        knnq.VIPtree_knnq("objectNum", fileName, 1500, kDefault);
 
 //         diTYpe
-        String fileName = "/KNNQ_diType";
+        String fileName = "/results/" + DataGenConstant.dataset + "/KNNQ_diType";
 //        knnq.IDModel_knnq("diType", fileName, 1500, kDefault);
 //        knnq.IDMatrix_knnq("diType", fileName, 1500, kDefault);
         knnq.ICIndex_knnq("diType", fileName, 1500, kDefault);

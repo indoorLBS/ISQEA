@@ -11,6 +11,7 @@ import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Point;
 import dk.aau.cs.indoorqueries.common.rStarTree3D.TreeNode;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.ClassifyPartition;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 import rx.Observable;
@@ -556,7 +557,7 @@ public class SPQ {
         SPQ spq = new SPQ();
 
         // distance
-        String fileName = "/SPQ_Dist.csv";
+        String fileName = "/results/" + DataGenConstant.dataset + "/SPQ_Dist.csv";
 //        spq.IDModel_SPQ("distance", fileName);
 //        spq.IDMatrix_SPQ("distance", fileName);
 //        spq.ICIndex_spq("distance", fileName);

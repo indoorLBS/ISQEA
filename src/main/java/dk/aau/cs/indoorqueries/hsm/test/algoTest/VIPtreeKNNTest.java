@@ -34,7 +34,6 @@ public class VIPtreeKNNTest {
 
 
         Point ps = new Point(1450, 1650, 0);
-        Point pt = new Point(15, 25, 13);
 
 
         VIPtree_KNN iPtree_knn = new VIPtree_KNN();

@@ -2,14 +2,31 @@ package dk.aau.cs.indoorqueries.common.algorithm;
 
 import dk.aau.cs.indoorqueries.common.indoorEntitity.*;
 import dk.aau.cs.indoorqueries.common.utilities.Constant;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
+import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * Algorithm of processing knnq using IDMatrix
+ * @author Tiantian Liu
+ */
+
 public class IDMatrix_KNN {
     public static ArrayList<ArrayList<Double>> kObjects = new ArrayList<>();
+
+    /**
+     * process knnq using IDMatrix
+     * @param q
+     * @param k
+     * @param indexMatrix
+     * @param d2dDistMap
+     * @return
+     * @throws IOException
+     */
 
     public ArrayList<ArrayList<Double>> knnQuery(Point q, int k, ArrayList<ArrayList<ArrayList<Double>>> indexMatrix, HashMap<String, Double> d2dDistMap) throws IOException {
 
@@ -55,6 +72,12 @@ public class IDMatrix_KNN {
         return kObjects;
     }
 
+    /**
+     * calculate distances from a point to objects and maintain the k nearest objects
+     * @param objects
+     * @param q
+     * @param k
+     */
     public void calDist(ArrayList<Integer> objects, Point q, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -67,6 +90,12 @@ public class IDMatrix_KNN {
         }
     }
 
+    /**
+     * calculate distances from a door to objects and maintain the k nearest objects
+     * @param objects
+     * @param d
+     * @param k
+     */
     public void calDist(ArrayList<Integer> objects, Door d, double curDist, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -165,6 +194,7 @@ public class IDMatrix_KNN {
 
     /**
      * get host partition of a point
+     * @param point
      */
     public int getHostPartition(Point point) {
         int partitionId = -1;
@@ -174,6 +204,7 @@ public class IDMatrix_KNN {
             Partition par = IndoorSpace.iPartitions.get(pars.get(i));
             if (point.getX() >= par.getX1() && point.getX() <= par.getX2() && point.getY() >= par.getY1() && point.getY() <= par.getY2()) {
                 partitionId = par.getmID();
+                if (DataGenConstant.dataset.equals("MZB") && IndoorSpace.iPartitions.get(partitionId).getmType() == RoomType.HALLWAY) continue;
                 return partitionId;
             }
         }
@@ -182,6 +213,8 @@ public class IDMatrix_KNN {
 
     /**
      * calculate distance between a point and an Object
+     * @param point
+     * @param object
      */
     public double distPointObject(Point point, IndoorObject object) {
         double dist = 0;

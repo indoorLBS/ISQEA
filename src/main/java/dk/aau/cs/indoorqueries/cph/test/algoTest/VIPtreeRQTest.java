@@ -10,8 +10,6 @@ import dk.aau.cs.indoorqueries.cph.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
 public class VIPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         CPHDataGenRead dateGenReadMen = new CPHDataGenRead();
@@ -37,6 +35,6 @@ public class VIPtreeRQTest {
         Point pt = new Point(250, 400, 0);
 
         VIPtree_RQ viPtree_rq = new VIPtree_RQ();
-        viPtree_rq.vipTreeRQ(ps, 1000, vipTree);
+        viPtree_rq.vipTreeRQ(ps, 300, vipTree);
     }
 }

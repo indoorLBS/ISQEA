@@ -33,7 +33,7 @@ public class IDMatrixRQTest {
         Point pt = new Point(15, 25, 13);
 
         IDMatrix_RQ idMatrix_rq = new IDMatrix_RQ();
-        idMatrix_rq.rangeQuery(ps, 1000, indexMatrix, d2dDistMap);
+        idMatrix_rq.rangeQuery(ps, 20, indexMatrix, d2dDistMap);
 
 
     }

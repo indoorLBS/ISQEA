@@ -3,6 +3,7 @@ package dk.aau.cs.indoorqueries.hsm.test.experiments;
 import dk.aau.cs.indoorqueries.common.iDModel.GenTopology;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
 import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 
@@ -23,7 +24,7 @@ public class DatasetProperty {
         int roomSize = 0;
         int stairSize = 0;
         int crucialParSize = 0;
-        String outputFile = System.getProperty("user.dir") + "/doorDistribute.txt";
+        String outputFile = System.getProperty("user.dir") + "/results/" + DataGenConstant.dataset + "/doorDistribute.txt";
         String result = "";
         int sum = 0;
 

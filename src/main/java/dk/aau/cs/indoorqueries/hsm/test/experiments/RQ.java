@@ -11,6 +11,7 @@ import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Point;
 import dk.aau.cs.indoorqueries.common.rStarTree3D.TreeNode;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.ClassifyPartition;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.ObjectGen;
@@ -795,7 +796,7 @@ public class RQ {
     public static void main(String[] arg) throws IOException {
         RQ rq = new RQ();
         // range
-//        String fileName = "/RQ_range.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/RQ_range.csv";
 //        rq.IDModel_rq("range", fileName, 1500);
 //        rq.IDMatrix_rq("range", fileName, 1500);
 //        rq.ICIndex_rq("range", fileName, 1500);
@@ -803,7 +804,7 @@ public class RQ {
 //        rq.VIPtree_rq("range", fileName, 1500);
 
 //        // objectNum
-        String fileName = "/RQ_objectNum.csv";
+        String fileName = "/results/" + DataGenConstant.dataset + "/RQ_objectNum.csv";
 //        rq.IDModel_rq("objectNum", fileName, 500);
 //        rq.IDMatrix_rq("objectNum", fileName, 500);
 //        rq.ICIndex_rq("objectNum", fileName, 500);

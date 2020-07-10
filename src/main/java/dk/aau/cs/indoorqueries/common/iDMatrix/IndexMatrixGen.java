@@ -80,10 +80,18 @@ public class IndexMatrixGen {
         doorList.set(0, new ArrayList<Double>(Arrays.asList((double) doorId, dist)));
     }
 
+    /**
+     * get the index list
+     * @return
+     */
     public ArrayList<ArrayList<ArrayList<Double>>> getIndexList() {
         return indexList;
     }
 
+    /**
+     * set door to door distance map
+     * @throws IOException
+     */
     public void calD2dDistMap() throws IOException {
         DistMatrixGen distMatrixGen = new DistMatrixGen();
         distMatrixGen.readDist();
@@ -91,22 +99,12 @@ public class IndexMatrixGen {
 
     }
 
+    /**
+     * get door to door distance map
+     * @return
+     */
     public HashMap<String, Double> getD2dDistMap() {
         return this.d2dDistMap;
     }
 
-    public static void main(String args[]) {
-        IndexMatrixGen indexMatrixGen = new IndexMatrixGen();
-        ArrayList<ArrayList<Double>> doorList = new ArrayList<>();
-        indexMatrixGen.addToIndexList(doorList, 1, 45.0);
-        System.out.println(doorList);
-        indexMatrixGen.addToIndexList(doorList, 2, 35.0);
-        System.out.println(doorList);
-        indexMatrixGen.addToIndexList(doorList, 3, 78.0);
-        System.out.println(doorList);
-        indexMatrixGen.addToIndexList(doorList, 4, 57.0);
-        System.out.println(doorList);
-        indexMatrixGen.addToIndexList(doorList, 5, 12.0);
-        System.out.println(doorList);
-    }
 }

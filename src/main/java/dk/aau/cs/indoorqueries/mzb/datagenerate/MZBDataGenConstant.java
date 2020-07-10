@@ -12,10 +12,16 @@ package dk.aau.cs.indoorqueries.mzb.datagenerate;
 public class MZBDataGenConstant {
 
     // PARAMETERS FOR INDOOR SPACES
+    public static String dataset = "MZB";
     /** dimensions of the floor */
     public static double floorRangeX = 138;
 
     public static double floorRangeY = 138;
+
+    /**
+     * type of dataset
+     */
+    public static int dataType = 1; // 1 means regular dataset; 0 means less doors; 2 means more doors;
 
     /** type of division */
     public static int divisionType = 1; // 1 means regular division; 0 means no division for hallway;

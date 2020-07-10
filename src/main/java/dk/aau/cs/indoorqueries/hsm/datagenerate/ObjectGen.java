@@ -1,5 +1,6 @@
 package dk.aau.cs.indoorqueries.hsm.datagenerate;
 
+import dk.aau.cs.indoorqueries.common.iDModel.GenTopology;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorObject;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
@@ -18,7 +19,7 @@ import java.util.Scanner;
  */
 
 public class ObjectGen {
-    private static String objectsFile = System.getProperty("user.dir") + "/objects_";
+    private static String objectsFile = System.getProperty("user.dir") + "/objects/HSM/objects_";
 
     /**
      * generate all objects
@@ -132,9 +133,18 @@ public class ObjectGen {
         }
     }
 
-    public static void main(String args[]) {
-        for (int i = 0; i < 10; i++) {
-            System.out.println((int) (Math.random() * (5 + 1)));
+    public static void main(String args[]) throws IOException{
+        HSMDataGenRead dateGenReadMen = new HSMDataGenRead();
+        dateGenReadMen.dataGen();
+
+        GenTopology genTopology = new GenTopology();
+        genTopology.genTopology();
+
+        ObjectGen ObjectGen = new ObjectGen();
+//        ObjectGen.genAllObject(2500);
+        ObjectGen.readObjects(250);
+        for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
+            System.out.println(IndoorSpace.iObject.get(i).getObjectX() + "-" +IndoorSpace.iObject.get(i).getObjectY());
         }
 
     }

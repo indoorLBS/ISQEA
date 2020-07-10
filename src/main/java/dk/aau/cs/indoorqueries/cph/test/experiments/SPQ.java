@@ -837,7 +837,7 @@ public class SPQ {
         SPQ spq = new SPQ();
 
         // distance
-//        String fileName = "/SPQ_Dist.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/SPQ_Dist.csv";
 //        spq.IDModel_SPQ("distance", fileName);
 //        spq.IDMatrix_SPQ("distance", fileName);
 //        spq.ICIndex_spq("distance", fileName);
@@ -845,7 +845,7 @@ public class SPQ {
 //        spq.VIPtree_SPQ("distance", fileName);
 
         // diType
-//        String fileName = "/diType_SPQ.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/diType_SPQ.csv";
 //        spq.IDModel_SPQ("diType", fileName);
 //        spq.IDMatrix_SPQ("diType", fileName);
 //        spq.ICIndex_spq("diType", fileName);

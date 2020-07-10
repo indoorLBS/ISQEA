@@ -12,11 +12,22 @@ package dk.aau.cs.indoorqueries.hsm.datagenerate;
 public class HSMDataGenConstant {
 
     // PARAMETERS FOR INDOOR SPACES
+    public static String dataset = "HSM";
     /** dimensions of the floor */
     public static double floorRangeX = 2100;
     public static double floorRangeY = 2700;
 
     public static double zoomLevel = 0.28;
+
+    /**
+     * type of dataset
+     */
+    public static int dataType = 1; // 1 means regular dataset; 0 means less doors; 2 means more doors;
+
+    /**
+     * type of division
+     * */
+    public static int divisionType = 1; // 1 means regular division; 0 means no division for hallway;
 
     /** numbers of the floor */
     public static int nFloor = 7;

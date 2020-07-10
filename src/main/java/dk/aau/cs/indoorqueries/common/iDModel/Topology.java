@@ -73,58 +73,7 @@ public class Topology {
 				}
 			}
 
-//			if (door_1.getmType() == DoorType.EXIT) {
-//				int doorID_2 = doorID_1 + IndoorSpace.iNumberDoorsPerFloor;
-//				System.out.println("EXIT door: " + doorID_1);
-//				System.out.println("EXIT door upstair door: " + doorID_2);
 //
-//				if (doorID_2 <= IndoorSpace.iDoors.size()) {
-//					Door door_2 = IndoorSpace.iDoors.get(doorID_2);
-//					List<Integer> partitions_3 = door_2.getmPartitions();
-//					System.out.println("upstair door mPartitions: " + partitions_3);
-//					for (int j = 0; j < partitions_3.size(); j++) {
-//						int partitionID_3 = partitions_3.get(j);
-//						if (partitionID_3 != mID) {
-//							// out door
-//							TopologyElement element_out = new TopologyElement(doorID_1, doorID_2, partitionID_3, false, false);
-//							addConnectivityElementOut(element_out);
-//
-//							// in door
-//							TopologyElement element_in = new TopologyElement(doorID_2, doorID_1, partitionID_3, false, true);
-//							addConnectivityElementIn(element_in);
-//
-//							// add the direction to the door
-//							IndoorSpace.iDoors.get(doorID_1).addDirection(new Direction(mID, partitionID_3, doorID_1, doorID_2));
-//							IndoorSpace.iDoors.get(doorID_1).addDirection(new Direction(partitionID_3, mID, doorID_2, doorID_1));
-//						}
-//					}
-//
-//				}
-//
-//				doorID_2 = doorID_1 - IndoorSpace.iNumberDoorsPerFloor;
-//
-//				if (doorID_2 >= 0) {
-//					Door door_2 = IndoorSpace.iDoors.get(doorID_2);
-//					List<Integer> partitions_3 = door_2.getmPartitions();
-//					for (int j = 0; j < partitions_3.size(); j++) {
-//						int partitionID_3 = partitions_3.get(j);
-//						if (partitionID_3 != mID) {
-//							// out door
-//							TopologyElement element_out = new TopologyElement(doorID_1, doorID_2, partitionID_3, false, false);
-//							addConnectivityElementOut(element_out);
-//
-//							// in door
-//							TopologyElement element_in = new TopologyElement(doorID_2, doorID_1, partitionID_3, false, true);
-//							addConnectivityElementIn(element_in);
-//
-//							// add the direction to the door
-//							IndoorSpace.iDoors.get(doorID_1).addDirection(new Direction(mID, partitionID_3, doorID_1, doorID_2));
-//							IndoorSpace.iDoors.get(doorID_1).addDirection(new Direction(partitionID_3, mID, doorID_2, doorID_1));
-//						}
-//					}
-//				}
-//
-//			}
 		}
 	}
 
@@ -133,24 +82,7 @@ public class Topology {
 	 *
 	 */
 	public void addConnectivityElementIn(TopologyElement topologyElement) {
-//		boolean exist = false;
-
-//		for (int i = 0; i < connectivityTierIn.size(); i ++) {
-//			TopologyElement temp = connectivityTierIn.get(i);
-//			
-//			if (temp.getIsPartition() == topologyElement.getIsPartition()) {
-//				if (temp.getIsIn() == topologyElement.getIsIn()
-//						&& temp.getmDoorID1() == topologyElement.getmDoorID1()
-//						&& temp.getmDoorID2() == topologyElement.getmDoorID2()
-//						&& temp.getmParID() == topologyElement.getmParID()) {
-//					exist = true;
-//				} else exist = false;
-//			} else exist = false;
-//		}
-//		
-//		if (!exist) {
 		connectivityTierIn.add(topologyElement);
-//		}
 	}
 
 	/**
@@ -166,25 +98,7 @@ public class Topology {
 	 *
 	 */
 	public void addConnectivityElementOut(TopologyElement topologyElement) {
-//		boolean exist = false;
-//		
-//		for (int i = 0; i < connectivityTierOut.size(); i ++) {
-//			TopologyElement temp = connectivityTierOut.get(i);
-//			
-//			if (temp.getIsPartition() == topologyElement.getIsPartition()) {
-//				if (temp.getIsIn() == topologyElement.getIsIn()
-//						&& temp.getmDoorID1() == topologyElement.getmDoorID1()
-//						&& temp.getmDoorID2() == topologyElement.getmDoorID2()
-//						&& temp.getmParID() == topologyElement.getmParID()) {
-//					exist = true;
-//					System.out.println("hey!!!");
-//				} else exist = false;
-//			} else exist = false;
-//		}
-//		
-//		if (!exist) {
 		connectivityTierOut.add(topologyElement);
-//		}
 	}
 
 	/**

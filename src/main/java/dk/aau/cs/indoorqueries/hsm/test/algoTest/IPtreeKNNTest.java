@@ -34,19 +34,6 @@ public class IPtreeKNNTest {
 
 
         Point ps = new Point(1450, 1650, 0);
-        ;
-        Point pt = new Point(15, 25, 13);
-
-//        for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
-//            IndoorObject ob = IndoorSpace.iObject.get(i);
-//            System.out.println("objectID: " + ob.getObjectId() + ", x: " + ob.getObjectX() + ", y: " + ob.getObjectY() + ", floor: " + ob.getoFloor() + ", parId: " + ob.getParId());
-//        }
-//
-//        for (int i = 0; i < 32; i++) {
-//            Partition par = IndoorSpace.iPartitions.get(i);
-//            ArrayList<Integer> parObjects = par.getmObjects();
-//            System.out.println("parId: " + i + " parObjects: " + parObjects);
-//        }
 
         IPtree_KNN iPtree_knn = new IPtree_KNN();
         iPtree_knn.iptreeKNN(ps, 3, ipTree);

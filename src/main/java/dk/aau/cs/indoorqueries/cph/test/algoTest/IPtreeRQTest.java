@@ -38,6 +38,6 @@ public class IPtreeRQTest {
         Point pt = new Point(250, 400, 0);
 
         IPtree_RQ iPtree_rq = new IPtree_RQ();
-        iPtree_rq.ipTreeRQ(ps, 1000, ipTree);
+        iPtree_rq.ipTreeRQ(ps, 300, ipTree);
     }
 }

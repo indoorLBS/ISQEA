@@ -37,6 +37,6 @@ public class VIPtreeRQTest {
         Point pt = new Point(15, 25, 13);
 
         VIPtree_RQ viPtree_rq = new VIPtree_RQ();
-        viPtree_rq.vipTreeRQ(ps, 1000, vipTree);
+        viPtree_rq.vipTreeRQ(ps, 100, vipTree);
     }
 }

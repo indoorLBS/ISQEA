@@ -3,15 +3,44 @@ package dk.aau.cs.indoorqueries.common.iDModel;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.D2Ddistance;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Graph;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Scanner;
+
+/**
+ * generate topoloty of indoor space
+ * @author Tiantian Liu
+ */
 
 public class GenTopology {
+    public static HashMap<Integer, HashMap<String, Double>> hallwayDistMatrix_floor = new HashMap<>();
     /**
      * generate connectivityTier
      */
     public void genTopology() throws IOException {
+        if (DataGenConstant.divisionType == 0) {
+            for (int i = 0; i < 3; i++) {
+                HashMap<String, Double> hallwayDistMatrix = new HashMap<>();
+                double dist = 0;
+                Path path = Paths.get(System.getProperty("user.dir") + "/inputfiles/" + DataGenConstant.dataset + "/hallway_distMatrix_division_0_floor_"+ i + ".txt");
+                Scanner scanner = new Scanner(path);
+
+                //read line by line
+                Boolean flag = false;
+                while(scanner.hasNextLine()){
+                    //process each line
+                    String line = scanner.nextLine();
+                    String[] tempArr = line.split("\t");
+                    hallwayDistMatrix.put(tempArr[1], Double.parseDouble(tempArr[2]));
+                }
+                hallwayDistMatrix_floor.put(i, hallwayDistMatrix);
+                if (!DataGenConstant.dataset.equals("MZB")) break;
+            }
+        }
         int partitionSize = IndoorSpace.iPartitions.size();
         for (int i = 0; i < partitionSize; i++) {
 
@@ -34,32 +63,5 @@ public class GenTopology {
             // add all the partitions into the Graph
             Graph.Partitions.put(i, IndoorSpace.iPartitions.get(i));
         }
-
-//        int floorSize = IndoorSpace.iFloors.size();
-//        for (int i = 0; i < floorSize; i ++) {
-//            // D2D distance Matrix
-//            HashMap<String, D2Ddistance> hashMap = IndoorSpace.iFloors.get(
-//                    i).getD2dHashMap();
-//            IndoorSpace.iD2D.putAll(hashMap);
-//
-////			// floor's distance matrix
-////			DistMatrix distMatrix = new DistMatrix(IndoorSpace.iFloors.get(i).getmID(), false);
-////			IndoorSpace.iFloors.get(i).setDistMatrix(distMatrix);
-//
-//            // partition's connectivity tier
-//            Topology topology = new Topology(IndoorSpace.iFloors.get(i).getmID());
-//            IndoorSpace.iFloors.get(i).setTopology(topology);
-//
-//            // add all the floors into the Graph
-//            Graph.Floors.put(i, IndoorSpace.iFloors.get(i));
-//        }
-//
-//        System.out.println("Partitions's distance matrix and connectivity tier generate finished!");
-
-        // add all the doors as nodes into the Graph
-//        int doorSize = IndoorSpace.iDoors.size();
-//        for (int i = 0; i < doorSize; i++) {
-//            Graph.Doors.put(i, IndoorSpace.iDoors.get(i));
-//        }
     }
 }

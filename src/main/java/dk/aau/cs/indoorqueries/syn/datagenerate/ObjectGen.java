@@ -22,7 +22,7 @@ import java.util.Scanner;
  */
 
 public class ObjectGen {
-    private static String objectsFile = System.getProperty("user.dir") + "/objects_";
+    private static String objectsFile = System.getProperty("user.dir") + "/objects/SYN/objects_";
 
     /**
      * generate all objects
@@ -198,8 +198,12 @@ public class ObjectGen {
 //        System.out.println(IndoorSpace.iCrucialPartitions.size());
         ObjectGen objectGen = new ObjectGen();
 //        objectGen.genAllObject(2500);
-        objectGen.readObjectsfordivide(2500);
-        objectGen.saveObjects(2500);
+        objectGen.readObjects(250);
+        for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
+            System.out.println(IndoorSpace.iObject.get(i).getObjectX() + "-" +IndoorSpace.iObject.get(i).getObjectY());
+        }
+//        objectGen.readObjectsfordivide(2500);
+//        objectGen.saveObjects(2500);
 
     }
 }

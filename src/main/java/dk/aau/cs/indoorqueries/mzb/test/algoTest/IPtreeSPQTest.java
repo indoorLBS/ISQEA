@@ -26,7 +26,7 @@ public class IPtreeSPQTest {
         vipTree.initTree();
 
         Point ps = new Point(2, 12, 0);
-        Point pt = new Point(90, 18, 0);
+        Point pt = new Point(57, 4, 2);
 
         IPtree_SPQ iPtree_spq = new IPtree_SPQ();
         iPtree_spq.ipTreeSPQ(ps, pt, vipTree);

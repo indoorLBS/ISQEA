@@ -10,9 +10,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * Algorithm of procesing knnq using VIPTree
+ * @author Tiantian Liu
+ */
 public class VIPtree_KNN {
     public static ArrayList<ArrayList<Double>> kObjects = new ArrayList<>();
 
+    /**
+     * process knnq using VIPTree
+     * @param q
+     * @param k
+     * @param tree
+     * @return
+     */
     public ArrayList<ArrayList<Double>> vipTreeKNN(Point q, int k, VIPTree tree) {
         kObjects = new ArrayList<>();
         HashMap<Integer, HashMap<Integer, Double>> pointToNodeAccDoorsDist = new HashMap<>();
@@ -103,6 +114,16 @@ public class VIPtree_KNN {
         return null;
     }
 
+    /**
+     * calculate distances from a point to access doors in a node
+     * @param point
+     * @param qPartitionId
+     * @param node
+     * @param tree
+     * @param caseNum
+     * @param pointToAllAncesDoorsDist
+     * @return
+     */
     public HashMap<Integer, Double> getDistPointToNodeVIP(Point point, int qPartitionId, Node node, VIPTree tree, int caseNum, HashMap<Integer, HashMap<Integer, Double>> pointToAllAncesDoorsDist) {
         HashMap<Integer, Double> result = new HashMap<>();
         ArrayList<Integer> partitions = node.getmPartitions();
@@ -292,6 +313,14 @@ public class VIPtree_KNN {
         return result;
     }
 
+    /**
+     * calculate distances from a point to access doors of all ancestors
+     * @param point
+     * @param par
+     * @param qNode
+     * @param tree
+     * @return
+     */
     public HashMap<Integer, HashMap<Integer, Double>> pointToAllAncestorDoorsDist(Point point, Partition par, Node qNode, VIPTree tree) {
         HashMap<Integer, HashMap<Integer, Double>> result = new HashMap<>();
 
@@ -373,6 +402,13 @@ public class VIPtree_KNN {
         return dist;
     }
 
+    /**
+     * change an array to string
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
     public String arrToString(String[] arr, int start, int end) {
         String result = "";
         for (int i = start; i <= end; i++) {
@@ -381,6 +417,13 @@ public class VIPtree_KNN {
         return result;
     }
 
+    /**
+     * find the common ancestor of two nodes
+     * @param n1
+     * @param n2
+     * @param tree
+     * @return
+     */
     public ArrayList<Node> commonAncestor(Node n1, Node n2, VIPTree tree) {
         ArrayList<Node> result = new ArrayList<Node>();
         Node temp_s = n1;
@@ -417,6 +460,14 @@ public class VIPtree_KNN {
         return result;
     }
 
+    /**
+     * calculate distance from a door to access doors of an ancestor
+     * @param doorId
+     * @param sNode
+     * @param n
+     * @param tree
+     * @return
+     */
     public HashMap<Integer, String> doorToAncestorDoorDistVIP(int doorId, Node sNode, Node n, VIPTree tree) {
         Node childNode = sNode;
         Node parentNode = tree.getNode(childNode.getParentNodeID());
@@ -621,6 +672,14 @@ public class VIPtree_KNN {
         }
         return kBound;
     }
+
+    /**
+     * calculate distances from a point to objects in a leafnode, and maintain the k nearest objects
+     * @param node
+     * @param q
+     * @param par
+     * @param k
+     */
 
     public void calDist(LeafNode node, Point q, Partition par, int k) {
 //        System.out.println("nodeId: " + node.getNodeID());

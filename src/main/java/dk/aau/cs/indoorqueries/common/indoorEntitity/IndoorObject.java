@@ -53,26 +53,50 @@ public class IndoorObject {
         this.oType = 0;
     }
 
+    /**
+     * get objectId
+     * @return
+     */
     public int getObjectId() {
         return objectId;
     }
 
+    /**
+     * get objectX
+     * @return
+     */
     public int getObjectX() {
         return objectX;
     }
 
+    /**
+     * get objectY
+     * @return
+     */
     public int getObjectY() {
         return objectY;
     }
 
+    /**
+     * get floor
+     * @return
+     */
     public int getoFloor() {
         return oFloor;
     }
 
+    /**
+     * get partitionId
+     * @return
+     */
     public int getParId() {
         return parId;
     }
 
+    /**
+     * set partitionId
+     * @param parId
+     */
     public void setParId(int parId) {
         this.parId = parId;
     }
@@ -130,11 +154,4 @@ public class IndoorObject {
         return parId;
     }
 
-    public void creatObject() {
-
-    }
-
-    public void isExist(int objectX, int objectY) {
-
-    }
 }

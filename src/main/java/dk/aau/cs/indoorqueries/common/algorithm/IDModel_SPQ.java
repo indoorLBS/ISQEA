@@ -5,12 +5,14 @@ import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Point;
 import dk.aau.cs.indoorqueries.common.utilities.Constant;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
+import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * dk.aau.cs.indoorqueries.algorithm of shortest distance (path) query based on IDModel
+ * Algorithm of proceccing shortest distance (path) query based on IDModel
  *
  * @Author Tiantian Liu
  */
@@ -18,7 +20,10 @@ import java.util.Arrays;
 public class IDModel_SPQ {
 
     /**
-     * calculate the distance between two point
+     * process spq using IDModel
+     * @param ps
+     * @param pt
+     * @return
      */
     public String pt2ptDistance3(Point ps, Point pt) {
         int visitDoors = 0;
@@ -42,8 +47,8 @@ public class IDModel_SPQ {
             Door tempDoor = IndoorSpace.iDoors.get(tempDoorId);
             ArrayList<Integer> tempPars = tempDoor.getD2PLeave();
             int tempParId = -1;
-            if (tempPars.size() > 2)
-                System.out.println("something wrong with D2PLeave size: dk.aau.cs.indoorqueries.algorithm.IDModel_SPQ.pt2ptDistance3");
+//            if (tempPars.size() > 2)
+//                System.out.println("something wrong with D2PLeave size: dk.aau.cs.indoorqueries.algorithm.IDModel_SPQ.pt2ptDistance3");
             for (int j = 0; j < tempPars.size(); j++) {
                 if (tempPars.get(j) != sPartitionId) {
                     tempParId = tempPars.get(j);
@@ -212,6 +217,7 @@ public class IDModel_SPQ {
             Partition par = IndoorSpace.iPartitions.get(pars.get(i));
             if (point.getX() >= par.getX1() && point.getX() <= par.getX2() && point.getY() >= par.getY1() && point.getY() <= par.getY2()) {
                 partitionId = par.getmID();
+                if (DataGenConstant.dataset.equals("MZB") && IndoorSpace.iPartitions.get(partitionId).getmType() == RoomType.HALLWAY) continue;
                 return partitionId;
             }
         }
@@ -226,6 +232,13 @@ public class IDModel_SPQ {
         dist = Math.sqrt(Math.pow(point.getX() - door.getX(), 2) + Math.pow(point.getY() - door.getY(), 2));
         return dist;
     }
+
+    /**
+     * calculate the distance between two points in the same partition
+     * @param p1
+     * @param p2
+     * @return
+     */
 
     public double distPoint2Point(Point p1, Point p2) {
         double dist = 0;

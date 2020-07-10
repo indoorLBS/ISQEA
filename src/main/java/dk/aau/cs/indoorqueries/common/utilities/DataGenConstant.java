@@ -8,11 +8,12 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.MZBDataGenConstant;
  * <h>HSMDataGenConstant</h>
  * Constant Values in Data Generating
  *
- * @author feng zijin
+ * @author feng zijin, Tiantian Liu
  */
 
 public class DataGenConstant {
     // PARAMETERS FOR INDOOR SPACES
+    public static String dataset = "SYN";
     /**
      * dimensions of the floor
      */
@@ -109,25 +110,33 @@ public class DataGenConstant {
 
     public static void init(String dataName) {
         if (dataName.equals("hsm")) {
+            dataset = HSMDataGenConstant.dataset;
             floorRangeX = HSMDataGenConstant.floorRangeX;
             floorRangeY = HSMDataGenConstant.floorRangeY;
             zoomLevel = HSMDataGenConstant.zoomLevel;
             nFloor = HSMDataGenConstant.nFloor;
             lenStairway = HSMDataGenConstant.lenStairway;
+            dataType = HSMDataGenConstant.dataType;
+            divisionType = HSMDataGenConstant.divisionType; // 1 means regular division; 0 means no division for hallway; 2 means more hallway;
+
         } else if (dataName.equals("cph")) {
+            dataset = CPHDataGenConstant.dataset;
             floorRangeX = CPHDataGenConstant.floorRangeX;
             floorRangeY = CPHDataGenConstant.floorRangeY;
             zoomLevel = CPHDataGenConstant.zoomLevel;
             nFloor = CPHDataGenConstant.nFloor;
             lenStairway = CPHDataGenConstant.lenStairway;
+            dataType = CPHDataGenConstant.dataType;
             divisionType = CPHDataGenConstant.divisionType; // 1 means regular division; 0 means no division for hallway; 2 means more hallway;
 
         } else if (dataName.equals("mzb")) {
+            dataset = MZBDataGenConstant.dataset;
             floorRangeX = MZBDataGenConstant.floorRangeX;
             floorRangeY = MZBDataGenConstant.floorRangeY;
             zoomLevel = MZBDataGenConstant.zoomLevel;
             nFloor = MZBDataGenConstant.nFloor;
             lenStairway = MZBDataGenConstant.lenStairway;
+            dataType = MZBDataGenConstant.dataType;
             divisionType = MZBDataGenConstant.divisionType; // 1 means regular division; 0 means no division for hallway; 2 means more hallway;
 
         }

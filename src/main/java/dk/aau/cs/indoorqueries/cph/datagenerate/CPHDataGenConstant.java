@@ -6,19 +6,27 @@ package dk.aau.cs.indoorqueries.cph.datagenerate;
 /**
  * <h>CPHDataGenConstant</h>
  * Constant Values in Data Generating
- * @author feng zijin
+ * @author feng zijin, Tiantian Liu
  *
  */
 public class CPHDataGenConstant {
 
     // PARAMETERS FOR INDOOR SPACES
+    public static String dataset = "CPH";
     /** dimensions of the floor */
     public static double floorRangeX = 2000;
     public static double floorRangeY = 2200;
 
     public static double zoomLevel = 0.6;
 
-    /** type of division */
+    /**
+     * type of dataset
+     */
+    public static int dataType = 1; // 1 means regular dataset; 0 means less doors; 2 means more doors;
+
+    /**
+     * type of division
+     * */
     public static int divisionType = 1; // 1 means regular division; 0 means no division for hallway;
 
     /** numbers of the floor */
@@ -57,7 +65,7 @@ public class CPHDataGenConstant {
 
     public static int curSizeDoor = -1;
 
-    public static int K = 4;    // number of public door to classify crucial and simple partition
+    public static int K = 4;    // number of doors to classify crucial and simple partition
 
     public static int totalNodeSize = 0;    // current total node size in the tree, used to generate nodeID
 
@@ -73,15 +81,5 @@ public class CPHDataGenConstant {
     // distance cube generation. true - generate distance between all doors
     public static boolean generateAll = true;
 
-    //0.2 0.4 0.6 0.8 1
-    public static double variedDoorRate = 0.8;
 
-    //4 8 12 16
-    public static int sizeOfCheckPoint = 4;
-
-    // 7 8 9 10 10.30 11 14 15 17 19 21 21.3 22 23
-    public static double[][] checkPoints_4 = {{0, 24}, {7, 22}};
-    public static double[][] checkPoints_8 = {{0, 24}, {7, 23}, {8, 22}, {9, 21.3}};
-    public static double[][] checkPoints_12 = {{0, 24}, {7, 23}, {8, 22}, {9, 21.3}, {10, 21}, {10.3, 19}};
-    public static double[][] checkPoints_16 = {{0, 24}, {7, 23}, {8, 22}, {9, 21.3}, {10, 21}, {10.3, 19}, {11, 17}, {14, 15}};
 }

@@ -5,20 +5,22 @@ import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Point;
 import dk.aau.cs.indoorqueries.common.utilities.Constant;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
+import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * shortest path (distance) query using IDMatrix
+ * Algorithm of processing spq using IDMatrix
  *
  * @author Tiantian Liu
  */
 
 public class IDMatrix_SPQ {
     /**
-     * calculate shortest distance between two points, and return the distance with the path.
+     * process spq using IDMatrix
      *
      * @param ps
      * @param pt
@@ -75,6 +77,7 @@ public class IDMatrix_SPQ {
             Partition par = IndoorSpace.iPartitions.get(pars.get(i));
             if (point.getX() >= par.getX1() && point.getX() <= par.getX2() && point.getY() >= par.getY1() && point.getY() <= par.getY2()) {
                 partitionId = par.getmID();
+                if (DataGenConstant.dataset.equals("MZB") && IndoorSpace.iPartitions.get(partitionId).getmType() == RoomType.HALLWAY) continue;
                 return partitionId;
             }
         }

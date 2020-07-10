@@ -17,7 +17,7 @@ import java.util.*;
 /**
  * <h>Partition</h> to describe a partition
  *
- * @author feng zijin
+ * @author feng zijin, Tiantian Liu
  *
  */
 public class Partition extends Rect {
@@ -248,37 +248,22 @@ public class Partition extends Rect {
                 int index_2 = this.mDoors.get(j);
                 Door door2 = IndoorSpace.iDoors.get(index_2);
                 D2Ddistance d2dDist;
-                if (door2.getmType() == DoorType.EXIT || door1.getmType() == DoorType.EXIT) {
-                    d2dDist = new D2Ddistance(index_1, index_2, DataGenConstant.lenStairway);
-                } else {
-//					if (HSMDataGenConstant.divisionType == 0 && this.getmType() == RoomType.HALLWAY) {
-////						double dist = 0;
-////						Path path = Paths.get(System.getProperty("user.dir") + "/hallway_distMatrix_division_0" + ".txt");
-////						Scanner scanner = new Scanner(path);
-////
-////						//read line by line
-////						Boolean flag = false;
-////						while(scanner.hasNextLine()){
-////							//process each line
-////							String line = scanner.nextLine();
-////							String[] tempArr = line.split("\t");
-////							if ((door1.getX() + "." + door1.getY() + "-" + door2.getX() + "." + door2.getY()).equals(tempArr[1])) {
-////								dist = Double.parseDouble(tempArr[2]);
-////								flag = true;
-////								break;
-////							}
-////						}
-////						if (!flag) {
-////							System.out.println("something wrong with hallway distance matrix");
-////							System.out.println(door1.getX() + "." + door1.getY() + "-" + door2.getX() + "." + door2.getY());
-////						}
-////
-////						d2dDist = new D2Ddistance(index_1, index_2, dist);
-//					}
-//					else {
-//						d2dDist = new D2Ddistance(index_1, index_2, door1.eDist(door2));
-//					}
-                    d2dDist = new D2Ddistance(index_1, index_2, door1.eDist(door2));
+                if (DataGenConstant.dataset.equals("SYN")) {
+                    if (door2.getmType() == DoorType.EXIT || door1.getmType() == DoorType.EXIT) {
+                        d2dDist = new D2Ddistance(index_1, index_2, DataGenConstant.lenStairway);
+                    } else {
+    //
+                        d2dDist = new D2Ddistance(index_1, index_2, door1.eDist(door2));
+                    }
+                }
+                else {
+                    if (door1.getmFloor() != door2.getmFloor()) {
+
+                        d2dDist = new D2Ddistance(index_1, index_2, DataGenConstant.lenStairway * Math.abs(door1.getmFloor() - door2.getmFloor()));
+                    }
+                    else {
+                        d2dDist = new D2Ddistance(index_1, index_2, door1.eDist(door2));
+                    }
                 }
 
                 d2dHashMap.put(Functions.keyConventer(index_1, index_2), d2dDist);

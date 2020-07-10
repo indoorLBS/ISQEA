@@ -31,8 +31,7 @@ public class IDModelRQTest {
         ObjectGen objectGen = new ObjectGen();
         objectGen.readObjects(1500);
 
-        Point ps = new Point(1450, 1650, 0);
-        Point pt = new Point(15, 25, 13);
+        Point ps = new Point(1450, 1650, 2);
 
         for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
             IndoorObject ob = IndoorSpace.iObject.get(i);
@@ -46,6 +45,6 @@ public class IDModelRQTest {
         }
 
         IDModel_RQ idModel_rq = new IDModel_RQ();
-        System.out.println(idModel_rq.range(ps, 1000));
+        System.out.println(idModel_rq.range(ps, 100));
     }
 }

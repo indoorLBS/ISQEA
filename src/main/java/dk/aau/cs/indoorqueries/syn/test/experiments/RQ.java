@@ -1101,7 +1101,7 @@ public class RQ {
     public static void main(String[] arg) throws IOException {
         RQ rq = new RQ();
 //        // range
-//        String fileName = "/range_RQ";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/range_RQ";
 //        rq.IDModel_rq("range", fileName, 1500);
 //        rq.IDMatrix_rq("range", fileName, 1500);
 //        rq.ICIndex_rq("range", fileName, 1500);
@@ -1109,7 +1109,7 @@ public class RQ {
 //        rq.VIPtree_rq("range", fileName, 1500);
 
 //        // objectNum
-//        String fileName = "/objectNum_RQ";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/objectNum_RQ";
 //        rq.IDModel_rq("objectNum", fileName, 2500);
 //        rq.IDMatrix_rq("objectNum", fileName, 2500);
 //        rq.ICIndex_rq("objectNum", fileName, 2500);
@@ -1117,7 +1117,7 @@ public class RQ {
 //        rq.VIPtree_rq("objectNum", fileName, 2500);
 
         // floor
-//        String fileName = "/floor_RQ";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/floor_RQ";
 //        rq.IDModel_rq("floor", fileName, 1500);
 //        rq.IDMatrix_rq("floor", fileName, 1500);
 //        rq.ICIndex_rq("floor", fileName, 1500);
@@ -1125,7 +1125,7 @@ public class RQ {
 //        rq.VIPtree_rq("floor", fileName, 1500);
 
 //         dataType
-//        String fileName = "/dataType_RQ";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/dataType_RQ";
 //        rq.IDModel_rq("dataType", fileName, 1500);
 //        rq.IDMatrix_rq("dataType", fileName, 1500);
 //        rq.ICIndex_rq("dataType", fileName, 1500);
@@ -1133,7 +1133,7 @@ public class RQ {
 //        rq.VIPtree_rq("dataType", fileName, 1500);
 
         // diType
-        String fileName = "/diType_RQ";
+        String fileName = "/results/" + DataGenConstant.dataset + "/diType_RQ";
 //        rq.IDModel_rq("diType", fileName, 1500);
 //        rq.IDMatrix_rq("diType", fileName, 1500);
 //        rq.ICIndex_rq("diType", fileName, 1500);

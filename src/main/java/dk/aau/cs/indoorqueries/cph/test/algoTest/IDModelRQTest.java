@@ -29,7 +29,7 @@ public class IDModelRQTest {
         genTopology.genTopology();
 
         ObjectGen ObjectGen = new ObjectGen();
-        ObjectGen.readObjects(500);
+        ObjectGen.readObjects(1500);
 
         Point ps = new Point(20, 200, 0);
         Point pt = new Point(250, 400, 0);
@@ -46,6 +46,6 @@ public class IDModelRQTest {
         }
 
         IDModel_RQ idModel_rq = new IDModel_RQ();
-        System.out.println(idModel_rq.range(ps, 500));
+        System.out.println(idModel_rq.range(ps, 300));
     }
 }

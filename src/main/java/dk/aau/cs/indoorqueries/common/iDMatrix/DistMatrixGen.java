@@ -26,10 +26,14 @@ import java.util.Scanner;
  */
 
 public class DistMatrixGen {
-    private static String d2dDistFile = System.getProperty("user.dir") + "/d2dDistMatrix_floor_" + DataGenConstant.nFloor + "_dataType_" + DataGenConstant.dataType + "_diType_" + DataGenConstant.divisionType + ".txt";
+    private static String d2dDistFile = System.getProperty("user.dir") + "/distanceMatrix/" + DataGenConstant.dataset + "/d2dDistMatrix_floor_" + DataGenConstant.nFloor + "_dataType_" + DataGenConstant.dataType + "_diType_" + DataGenConstant.divisionType + ".txt";
     public static HashMap<String, Double> d2dDistMap = new HashMap<String, Double>();        // the distance between two doors
     public static HashMap<String, String> d2dRouteMap = new HashMap<String, String>();
 
+    /**
+     * read distance matrix
+     * @throws IOException
+     */
     public void readDist() throws IOException {
         Path path = Paths.get(d2dDistFile);
         Scanner scanner = new Scanner(path);
@@ -97,6 +101,12 @@ public class DistMatrixGen {
         System.out.println("all is finished");
     }
 
+    /**
+     * calculate the distance between two doors
+     * @param ds
+     * @param dt
+     * @return
+     */
     public String d2dDistance(Door ds, Door dt) {
         double minDist = Constant.large;
         int dsId = ds.getmID();
@@ -196,139 +206,22 @@ public class DistMatrixGen {
         return result;
     }
 
+    /**
+     * get door to door distance map
+     * @return
+     */
     public HashMap<String, Double> getD2dDistMap() {
         return d2dDistMap;
     }
 
+    /**
+     * get door to door route map
+     * @return
+     */
     public HashMap<String, String> getD2dRouteMap() {
         return d2dRouteMap;
     }
 
-//    /**
-//     * generate door to door distance matrix
-//     */
-//
-//    public void d2dDistMatrixGenforDivide() {
-//        String result = "";
-//        for (int i = 0; i < IndoorSpace.iNumberDoorsPerFloor; i++) {
-//            Door door1 = IndoorSpace.iDoors.get(i);
-//            Boolean flag1 = false;
-//            ArrayList<Integer> pars1 = door1.getmPartitions();
-//            for (int m = 0; m < pars1.size(); m++) {
-//                if (IndoorSpace.iPartitions.get(pars1.get(m)).getmType() == RoomType.HALLWAY) {
-//                    flag1 = true;
-//                    break;
-//                }
-//            }
-//            if (!flag1) continue;
-//
-//
-//            for (int j = 0; j < IndoorSpace.iNumberDoorsPerFloor; j++) {
-//                System.out.println("door1: " + i + ", door2: " + j);
-//
-//                Door door2 = IndoorSpace.iDoors.get(j);
-//
-//                Boolean flag2 = false;
-//                ArrayList<Integer> pars2 = door2.getmPartitions();
-//                for (int m = 0; m < pars2.size(); m++) {
-//                    if (IndoorSpace.iPartitions.get(pars2.get(m)).getmType() == RoomType.HALLWAY) {
-//                        flag2 = true;
-//                        break;
-//                    }
-//                }
-//                if (!flag2) continue;
-//
-//
-//                result += i + "-" + j + "\t" + door1.getX() + "." + door1.getY() + "-" + door2.getX() + "." + door2.getY() + "\t" + d2dDistanceforDivide(door1, door2);
-////                result += j+ "-" + i + "\t" + d2dDistance(door2, door1);
-//            }
-//
-//        }
-//        String outputFile = System.getProperty("user.dir") + "/hallway_distMatrix_division_0" + ".txt";
-//        try {
-//            FileWriter fw = new FileWriter(outputFile);
-//            fw.write(result);
-//            fw.flush();
-//            fw.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return;
-//        }
-//        System.out.println("all is finished");
-//    }
-//    public String d2dDistanceforDivide (Door ds, Door dt) {
-//        double minDist = Constant.large;
-//        int dsId = ds.getmID();
-//        int dtId = dt.getmID();
-//
-//        if (dsId == dtId) {
-//            return 0 + "\t" + dsId + "\n";
-//        }
-//        double [] dist = new double[IndoorSpace.iDoors.size()];
-//        ArrayList<ArrayList<Integer>> prev = new ArrayList<>();
-//        int [] isDoorVisited = new int[IndoorSpace.iDoors.size()];
-//
-//        BinaryHeap H = new BinaryHeap(IndoorSpace.iDoors.size());
-//
-//        for (int i = 0; i < IndoorSpace.iDoors.size(); i++) {
-//            if (i != dsId) {
-//                dist[i] = Constant.large;
-//            } else {
-//                dist[i] = 0;
-//            }
-//            H.insert(dist[i], i);
-//            prev.add(null);
-//        }
-//
-//        while (H.heapSize > 0) {
-//            String minElement = H.delete_min();
-//            String [] minElementArr = minElement.split(",");
-//            int curDoorId = Integer.parseInt(minElementArr[1]);
-//            if (Double.parseDouble(minElementArr[0]) != dist[curDoorId]) {
-//                System.out.println("Something wrong with min heap: dk.aau.cs.indoorqueries.algorithm.IDModel_SPQ.pt2ptDistance3");
-//            }
-//
-//            if (curDoorId == dtId) {
-//                System.out.println(getPath(prev, dsId, dtId));
-//                return dist[curDoorId] + "\t" + getPath(prev, dsId, dtId) + "\n";
-//            }
-//
-//            if (dist[curDoorId] >= Constant.large) return minDist + "" + "\n";
-//
-//            isDoorVisited[curDoorId] = 1;
-//            Door curDoor = IndoorSpace.iDoors.get(curDoorId);
-//
-//            ArrayList<Integer> parts = curDoor.getmPartitions();
-////            System.out.println("parts: " + parts);
-//            for (int j = 0; j < parts.size(); j++) {
-//                int nextParId = parts.get(j);
-//                Partition nextPar = IndoorSpace.iPartitions.get(nextParId);
-//                if (nextPar.getmType() != RoomType.HALLWAY) continue;
-//                ArrayList<Integer> leaveDoors = nextPar.getmDoors();
-////                System.out.println("leaveDoor: " + leaveDoors);
-//                for (int k = 0; k < leaveDoors.size(); k++) {
-//                    int leaveDoorId = leaveDoors.get(k);
-////                    System.out.println("leaveDoorId: " + leaveDoorId);
-//                    if (isDoorVisited[leaveDoorId] != 1) {
-////                        System.out.println("first if");
-//                        if (dist[curDoorId] + nextPar.getdistMatrix().getDistance(curDoorId, leaveDoorId) < dist[leaveDoorId]) {
-////                            System.out.println("second if");
-//                            double oldDist = dist[leaveDoorId];
-//                            dist[leaveDoorId] = dist[curDoorId] + nextPar.getdistMatrix().getDistance(curDoorId, leaveDoorId);
-////                            System.out.println("dist of leaveDoorId: " + dist[leaveDoorId]);
-//                            prev.set(leaveDoorId, new ArrayList<>(Arrays.asList(nextParId, curDoorId)));
-//                            H.updateNode(oldDist, leaveDoorId, dist[leaveDoorId], leaveDoorId);
-////                            System.out.println("prev: " + prev.get(leaveDoorId));
-//                        }
-//
-//                    }
-//                }
-//            }
-//
-//
-//        }
-//        return minDist + "" + "\n";
-//    }
 
     public static void main(String arg[]) throws IOException {
         Runtime runtime = Runtime.getRuntime();

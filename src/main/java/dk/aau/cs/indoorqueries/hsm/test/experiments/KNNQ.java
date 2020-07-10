@@ -11,6 +11,7 @@ import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Point;
 import dk.aau.cs.indoorqueries.common.rStarTree3D.TreeNode;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.ClassifyPartition;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.ObjectGen;
@@ -789,7 +790,7 @@ public class KNNQ {
     public static void main(String[] arg) throws IOException {
         KNNQ knnq = new KNNQ();
         // k
-//        String fileName = "/KNNQ_k";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/KNNQ_k";
 //        knnq.IDModel_knnq("k", fileName, 1500);
 //        knnq.IDMatrix_knnq("k", fileName, 1500);
 //        knnq.ICIndex_knnq("k", fileName, 1500);
@@ -797,7 +798,7 @@ public class KNNQ {
 //        knnq.VIPtree_knnq("k", fileName, 1500);
 
 //        // objectNum
-        String fileName = "/KNNQ_objectNum";
+        String fileName = "/results/" + DataGenConstant.dataset + "/KNNQ_objectNum";
 //        knnq.IDModel_knnq("objectNum", fileName, 2500);
 //        knnq.IDMatrix_knnq("objectNum", fileName, 2500);
 //        knnq.ICIndex_knnq("objectNum", fileName, 2500);

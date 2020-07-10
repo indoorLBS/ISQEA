@@ -31,11 +31,11 @@ public class IDMatrixRQTest {
         HashMap<String, Double> d2dDistMap = indexMatrixGen.getD2dDistMap();
 
 
-        Point ps = new Point(2, 12, 0);
+        Point ps = new Point(1450, 1650, 0);
         Point pt = new Point(15, 25, 13);
 
         IDMatrix_RQ idMatrix_rq = new IDMatrix_RQ();
-        idMatrix_rq.rangeQuery(ps, 1000, indexMatrix, d2dDistMap);
+        idMatrix_rq.rangeQuery(ps, 100, indexMatrix, d2dDistMap);
 
 
     }

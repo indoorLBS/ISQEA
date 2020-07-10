@@ -3,18 +3,26 @@ package dk.aau.cs.indoorqueries.common.algorithm;
 
 import dk.aau.cs.indoorqueries.common.indoorEntitity.*;
 import dk.aau.cs.indoorqueries.common.utilities.Constant;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
+import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * k nearest neighbor query using IDModel
+ * Algorithm of processing k nearest neighbor query using IDModel
  *
  * @author Tiantian Liu
  */
 public class IDModel_KNN {
     public static ArrayList<ArrayList<Double>> kObjects = new ArrayList<>();
 
+    /**
+     * process knnq using IDModel
+     * @param q
+     * @param k
+     * @return
+     */
     public ArrayList<ArrayList<Double>> knn(Point q, int k) {
         kObjects = new ArrayList<>();
         int[] isParVisited = new int[IndoorSpace.iPartitions.size()];
@@ -99,6 +107,13 @@ public class IDModel_KNN {
         return kObjects;
     }
 
+    /**
+     * calculate distances from a point to objects and maintain the k nearest objects
+     * @param objects
+     * @param q
+     * @param k
+     */
+
     public void calDist(ArrayList<Integer> objects, Point q, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -110,6 +125,13 @@ public class IDModel_KNN {
             }
         }
     }
+
+    /**
+     * calculate distances from a door to objects and maintain the k nearest objects
+     * @param objects
+     * @param d
+     * @param k
+     */
 
     public void calDist(ArrayList<Integer> objects, Door d, double curDist, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
@@ -219,6 +241,7 @@ public class IDModel_KNN {
             Partition par = IndoorSpace.iPartitions.get(pars.get(i));
             if (point.getX() >= par.getX1() && point.getX() <= par.getX2() && point.getY() >= par.getY1() && point.getY() <= par.getY2()) {
                 partitionId = par.getmID();
+                if (DataGenConstant.dataset.equals("MZB") && IndoorSpace.iPartitions.get(partitionId).getmType() == RoomType.HALLWAY) continue;
                 return partitionId;
             }
         }
@@ -241,22 +264,6 @@ public class IDModel_KNN {
         double dist = 0;
         dist = Math.sqrt(Math.pow(point.getX() - door.getX(), 2) + Math.pow(point.getY() - door.getY(), 2));
         return dist;
-    }
-
-    public static void main(String args[]) {
-        IDModel_KNN idModel_knn = new IDModel_KNN();
-        idModel_knn.addObToKlist(1, 345, 5);
-        System.out.println(kObjects);
-        idModel_knn.addObToKlist(2, 123.0, 5);
-        System.out.println(kObjects);
-        idModel_knn.addObToKlist(3, 567, 5);
-        System.out.println(kObjects);
-        idModel_knn.addObToKlist(4, 456, 5);
-        System.out.println(kObjects);
-        idModel_knn.addObToKlist(5, 1111, 5);
-        System.out.println(kObjects);
-        idModel_knn.addObToKlist(6, 333, 5);
-        System.out.println(kObjects);
     }
 
 }

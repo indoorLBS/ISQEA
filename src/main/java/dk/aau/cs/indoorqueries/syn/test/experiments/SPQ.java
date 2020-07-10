@@ -874,7 +874,7 @@ public class SPQ {
         SPQ spq = new SPQ();
 
 //        // distance
-//        String fileName = "/Dist_SPQ.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/Dist_SPQ.csv";
 //        spq.IDModel_SPQ("distance", fileName);
 //        spq.IDMatrix_SPQ("distance", fileName);
 //        spq.ICIndex_spq("distance", fileName);
@@ -883,7 +883,7 @@ public class SPQ {
 //
 
         // floor
-//        String fileName = "/Floor_SPQ.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/Floor_SPQ.csv";
 //        spq.IDModel_SPQ("floor", fileName);
 //        spq.IDMatrix_SPQ("floor", fileName);
 //        spq.ICIndex_spq("floor", fileName);
@@ -892,7 +892,7 @@ public class SPQ {
 //
 
         // dataType
-        String fileName = "/dataType_SPQ.csv";
+        String fileName = "/results/" + DataGenConstant.dataset + "/dataType_SPQ.csv";
 //        spq.IDModel_SPQ("dataType", fileName);
 //        spq.IDMatrix_SPQ("dataType", fileName);
 //        spq.ICIndex_spq("dataType", fileName);
@@ -901,7 +901,7 @@ public class SPQ {
 
 
         // diType
-//        String fileName = "/diType_SPQ.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/diType_SPQ.csv";
 //        spq.IDModel_SPQ("diType", fileName);
 //        spq.IDMatrix_SPQ("diType", fileName);
 //        spq.ICIndex_spq("diType", fileName);

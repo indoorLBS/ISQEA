@@ -12,7 +12,7 @@ import java.util.Iterator;
  * <h1>Door</h1>
  * to describe a door 
  *
- * @author feng zijin
+ * @author feng zijin, Tiantian Liu
  *
  */
 public class Door extends Point implements Comparable<Object> {

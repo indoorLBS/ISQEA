@@ -12,9 +12,20 @@ import dk.aau.cs.indoorqueries.common.utilities.Constant;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Algorithm of processing spq using VIPTree
+ * @author Tiantian Liu
+ */
 public class VIPtree_SPQ {
     public static int visitDoors = 0;
 
+    /**
+     * process spq using VIPTree
+     * @param s
+     * @param t
+     * @param tree
+     * @return
+     */
     public int vipTreeSPQ(Point s, Point t, VIPTree tree) {
         visitDoors = 0;
         LeafNode sNode = (LeafNode) tree.leaf(s);
@@ -143,6 +154,14 @@ public class VIPtree_SPQ {
         return visitDoors;
     }
 
+    /**
+     * find the common ancestor of two nodes
+     * @param leaf_s
+     * @param leaf_e
+     * @param tree
+     * @return
+     */
+
     public ArrayList<Node> commonAncestor(Node leaf_s, Node leaf_e, VIPTree tree) {
         ArrayList<Node> result = new ArrayList<Node>();
         int temp_sId = leaf_s.getNodeID();
@@ -172,6 +191,14 @@ public class VIPtree_SPQ {
         return result;
     }
 
+    /**
+     * calculate distances from a point to access doors of an ancestor
+     * @param point
+     * @param nLeaf
+     * @param nAncestor
+     * @param tree
+     * @return
+     */
     public HashMap<Integer, String> pointToAncestorAccDoorDistVIP(Point point, LeafNode nLeaf, Node nAncestor, VIPTree tree) {
         HashMap<Integer, String> result = new HashMap<>(); // key: access door Id; Object: minDist + minPath
         Partition par = tree.partition(point);
@@ -230,12 +257,25 @@ public class VIPtree_SPQ {
         return dist;
     }
 
+    /**
+     * calculate distance between two points in the same partition
+     * @param p1
+     * @param p2
+     * @return
+     */
     public double distPoint2Point(Point p1, Point p2) {
         double dist = 0;
         dist = Math.sqrt(Math.pow(p1.getX() - p2.getX(), 2) + Math.pow(p1.getY() - p2.getY(), 2));
         return dist;
     }
 
+    /**
+     * change an array to string
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
     public String arrToString(String[] arr, int start, int end) {
         String result = "";
         for (int i = start; i <= end; i++) {
@@ -244,6 +284,11 @@ public class VIPtree_SPQ {
         return result;
     }
 
+    /**
+     * reverse an array
+     * @param arr
+     * @return
+     */
     public String[] convertArr(String[] arr) {
         String[] result = new String[arr.length];
         for (int i = 1; i < arr.length; i++) {

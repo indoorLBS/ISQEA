@@ -12,9 +12,20 @@ import dk.aau.cs.indoorqueries.common.utilities.Constant;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Algorithm of processing spq using IPTree
+ * @author Tiantian Liu
+ */
 public class IPtree_SPQ {
     public static int visitDoors = 0;
 
+    /**
+     * process spq using IPTree
+     * @param s
+     * @param t
+     * @param tree
+     * @return
+     */
     public int ipTreeSPQ(Point s, Point t, VIPTree tree) {
         visitDoors = 0;
         Node sNode = tree.leaf(s);
@@ -143,7 +154,14 @@ public class IPtree_SPQ {
         return visitDoors;
     }
 
-
+    /**
+     * calculate distance from a point to access doors of an ancestor
+     * @param point
+     * @param nLeaf
+     * @param n
+     * @param tree
+     * @return
+     */
     public HashMap<Integer, String> pointToAncestorDoorDist(Point point, Node nLeaf, Node n, VIPTree tree) {
         Node childNode = nLeaf;
         Node parentNode = tree.getNode(childNode.getParentNodeID());
@@ -225,6 +243,13 @@ public class IPtree_SPQ {
         return result;
     }
 
+    /**
+     * calculate distance from a door to access doors of the leaf node
+     * @param point
+     * @param n
+     * @param tree
+     * @return
+     */
     public HashMap<Integer, String> pointToAccLeafDist(Point point, LeafNode n, VIPTree tree) {
         HashMap<Integer, String> result = new HashMap<>(); // key: access door Id; Object: minDist + minPath
         Partition par = tree.partition(point);
@@ -290,6 +315,12 @@ public class IPtree_SPQ {
         return result;
     }
 
+    /**
+     * judge whether two doors in a same partition
+     * @param d1
+     * @param d2
+     * @return
+     */
     public Boolean inSamePartition(int d1, int d2) {
         Door door1 = IndoorSpace.iDoors.get(d1);
         ArrayList<Integer> partitions1 = door1.getmPartitions();
@@ -315,12 +346,25 @@ public class IPtree_SPQ {
         return dist;
     }
 
+    /**
+     * calculate distance between two points in the same partition
+     * @param p1
+     * @param p2
+     * @return
+     */
     public double distPoint2Point(Point p1, Point p2) {
         double dist = 0;
         dist = Math.sqrt(Math.pow(p1.getX() - p2.getX(), 2) + Math.pow(p1.getY() - p2.getY(), 2));
         return dist;
     }
 
+    /**
+     * change an array to string
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
     public String arrToString(String[] arr, int start, int end) {
         String result = "";
         for (int i = start; i <= end; i++) {
@@ -328,6 +372,14 @@ public class IPtree_SPQ {
         }
         return result;
     }
+
+    /**
+     * find the common ancestor of two nodes
+     * @param leaf_s
+     * @param leaf_e
+     * @param tree
+     * @return
+     */
 
     public ArrayList<Node> commonAncestor(Node leaf_s, Node leaf_e, VIPTree tree) {
         ArrayList<Node> result = new ArrayList<Node>();
@@ -358,6 +410,11 @@ public class IPtree_SPQ {
         return result;
     }
 
+    /**
+     * reverse an array
+     * @param arr
+     * @return
+     */
     public String[] convertArr(String[] arr) {
         String[] result = new String[arr.length];
         for (int i = 1; i < arr.length; i++) {

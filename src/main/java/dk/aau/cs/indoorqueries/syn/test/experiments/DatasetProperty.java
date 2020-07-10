@@ -24,7 +24,7 @@ public class DatasetProperty {
         int roomSize = 0;
         int stairSize = 0;
         int crucialParSize = 0;
-        String outputFile = System.getProperty("user.dir") + "/doorDistribute_doorType_" + DataGenConstant.dataType + "_diType_" + DataGenConstant.divisionType + ".txt";
+        String outputFile = System.getProperty("user.dir") + "/results/" + DataGenConstant.dataset + "/doorDistribute_doorType_" + DataGenConstant.dataType + "_diType_" + DataGenConstant.divisionType + ".txt";
         String result = "";
         int sum = 0;
 

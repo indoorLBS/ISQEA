@@ -9,7 +9,18 @@ import dk.aau.cs.indoorqueries.common.utilities.Constant;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Algorithm of processing rq using VIPTree
+ * @author Tiantian Liu
+ */
 public class VIPtree_RQ {
+    /**
+     * process rq using VIPTree
+     * @param q
+     * @param r
+     * @param tree
+     * @return
+     */
     public ArrayList<Integer> vipTreeRQ(Point q, double r, VIPTree tree) {
         ArrayList<Integer> R = new ArrayList<>();
 
@@ -103,6 +114,17 @@ public class VIPtree_RQ {
         System.out.println(R);
         return R;
     }
+
+    /**
+     * calculate distances from a point to access doors in a node
+     * @param point
+     * @param qPartitionId
+     * @param node
+     * @param tree
+     * @param caseNum
+     * @param pointToAllAncesDoorsDist
+     * @return
+     */
 
     public HashMap<Integer, Double> getDistPointToNodeVIP(Point point, int qPartitionId, Node node, VIPTree tree, int caseNum, HashMap<Integer, HashMap<Integer, Double>> pointToAllAncesDoorsDist) {
         HashMap<Integer, Double> result = new HashMap<>();
@@ -293,6 +315,14 @@ public class VIPtree_RQ {
         return result;
     }
 
+    /**
+     * calculate distances from a point to access doors of all ancestors
+     * @param point
+     * @param par
+     * @param qNode
+     * @param tree
+     * @return
+     */
     public HashMap<Integer, HashMap<Integer, Double>> pointToAllAncestorDoorsDist(Point point, Partition par, Node qNode, VIPTree tree) {
         HashMap<Integer, HashMap<Integer, Double>> result = new HashMap<>();
 
@@ -343,6 +373,12 @@ public class VIPtree_RQ {
         return result;
     }
 
+    /**
+     * get objects within r from a point
+     * @param node
+     * @param q
+     * @param r
+     */
     public ArrayList<Integer> rangeSearch(LeafNode node, Point q, Partition par, double r) {
         ArrayList<Integer> objects = node.getAllObjects();
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
@@ -399,6 +435,13 @@ public class VIPtree_RQ {
         return dist;
     }
 
+    /**
+     * change an array to string
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
     public String arrToString(String[] arr, int start, int end) {
         String result = "";
         for (int i = start; i <= end; i++) {
@@ -407,6 +450,13 @@ public class VIPtree_RQ {
         return result;
     }
 
+    /**
+     * find the common ancestor of two nodes
+     * @param n1
+     * @param n2
+     * @param tree
+     * @return
+     */
     public ArrayList<Node> commonAncestor(Node n1, Node n2, VIPTree tree) {
         ArrayList<Node> result = new ArrayList<Node>();
         Node temp_s = n1;
@@ -443,6 +493,14 @@ public class VIPtree_RQ {
         return result;
     }
 
+    /**
+     * calculate distance from a door to access doors of an ancestor
+     * @param doorId
+     * @param sNode
+     * @param n
+     * @param tree
+     * @return
+     */
     public HashMap<Integer, String> doorToAncestorDoorDistVIP(int doorId, Node sNode, Node n, VIPTree tree) {
         Node childNode = sNode;
         Node parentNode = tree.getNode(childNode.getParentNodeID());

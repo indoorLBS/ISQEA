@@ -5,6 +5,7 @@ import com.github.davidmoten.rtree3d.geometry.Box;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.*;
 import dk.aau.cs.indoorqueries.common.utilities.Constant;
 import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
+import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,10 +13,22 @@ import java.util.List;
 
 import static org.apache.commons.lang3.math.NumberUtils.min;
 
+/**
+ * Algorithm of processing rq using ICIndex
+ * @author Tiantian Liu
+ */
+
 public class ICIndex_RQ {
     public static ArrayList<Integer> R_objects = new ArrayList<>();
     public static ArrayList<Integer> R_partitions = new ArrayList<>();
 
+    /**
+     * process rq using ICIndex
+     * @param q
+     * @param r
+     * @param T
+     * @return
+     */
     public ArrayList<Integer> iRQ(Point q, double r, RTree<Integer, Box> T) {
         R_partitions = new ArrayList<>();
         R_objects = new ArrayList<>();
@@ -49,6 +62,12 @@ public class ICIndex_RQ {
         return result;
     }
 
+    /**
+     * get objects within r from a point
+     * @param q
+     * @param r
+     * @param T
+     */
     public void rangeSearch(Point q, double r, RTree<Integer, Box> T) {
         Queue<Node<Integer, Box>> Q = new Queue<>();
         Q.enqueue(T.root().get());
@@ -91,6 +110,12 @@ public class ICIndex_RQ {
 
     }
 
+    /**
+     * get min distance between a point and a node
+     * @param q
+     * @param node
+     * @return
+     */
     public double minKDistPoint2Node(Point q, Node<Integer, Box> node) {
         double minKN = 0;
         int qFloor = q.getmFloor();
@@ -130,6 +155,12 @@ public class ICIndex_RQ {
         return minKN;
     }
 
+    /**
+     * get min distance between a point and an object
+     * @param q
+     * @param ob
+     * @return
+     */
     public double minKDistPoint2Object(Point q, IndoorObject ob) {
         double minKO = 0;
         int qFloor = q.getmFloor();
@@ -162,6 +193,15 @@ public class ICIndex_RQ {
         return minKO;
     }
 
+    /**
+     * get min distance between a point and a rectangle
+     * @param q
+     * @param x1
+     * @param x2
+     * @param y1
+     * @param y2
+     * @return
+     */
     public double minDistPoint2Rec(Point q, double x1, double x2, double y1, double y2) {
         double minDist = 0;
         double qX = q.getX();
@@ -221,6 +261,7 @@ public class ICIndex_RQ {
             if (par == null) continue;
             if (point.getX() >= par.getX1() && point.getX() <= par.getX2() && point.getY() >= par.getY1() && point.getY() <= par.getY2()) {
                 partitionId = par.getmID();
+                if (DataGenConstant.dataset.equals("MZB") && IndoorSpace.iPartitions.get(partitionId).getmType() == RoomType.HALLWAY) continue;
                 return partitionId;
             }
         }
@@ -445,6 +486,13 @@ public class ICIndex_RQ {
         return result;
     }
 
+    /**
+     * get objects within r from a point
+     * @param q
+     * @param r
+     * @param T
+     * @return
+     */
     public ArrayList<Integer> range(Point q, double r, RTree<Integer, Box> T) {
         ArrayList<Integer> R = new ArrayList<>();
         int[] isParVisited = new int[IndoorSpace.iPartitions.size()];
@@ -531,6 +579,12 @@ public class ICIndex_RQ {
         return R;
     }
 
+    /**
+     * get objects within r from a point
+     * @param q
+     * @param r
+     */
+
     public ArrayList<Integer> rangeSearch(ArrayList<Integer> objects, Point q, double r) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -543,6 +597,13 @@ public class ICIndex_RQ {
         }
         return canObjects;
     }
+
+    /**
+     * get objects within r from a door
+     * @param objects
+     * @param r
+     * @param R
+     */
 
     public ArrayList<Integer> rangeSearch(ArrayList<Integer> objects, Door d, double r, ArrayList<Integer> R) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects

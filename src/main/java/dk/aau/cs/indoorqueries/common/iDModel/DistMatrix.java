@@ -20,7 +20,7 @@ import java.util.Scanner;
  * <h>DistMatrix</h>
  * represent the exit to exit (exit2exit) distance
  *
- * @author feng zijin
+ * @author feng zijin, Tiantian Liu
  *
  */
 public class DistMatrix {
@@ -39,26 +39,24 @@ public class DistMatrix {
 	 */
 	private void createMatrix() throws IOException {
 		if (DataGenConstant.divisionType == 0) {
-			HashMap<String, Double> hallwayDistMatrix = new HashMap<>();
-			double dist = 0;
-			Path path = Paths.get(System.getProperty("user.dir") + "/hallway_distMatrix_division_0_new" + ".txt");
-			Scanner scanner = new Scanner(path);
-
-			//read line by line
-			Boolean flag = false;
-			while (scanner.hasNextLine()) {
-				//process each line
-				String line = scanner.nextLine();
-				String[] tempArr = line.split("\t");
-				hallwayDistMatrix.put(tempArr[1], Double.parseDouble(tempArr[2]));
-			}
-
 			Partition partition = IndoorSpace.iPartitions.get(mID);
 			int doorNum = partition.getmDoors().size();
+			int index;
+			if (DataGenConstant.dataset.equals("MZB")) {
+				if (partition.getmFloor() >= 2) {
+					index = 2;
+				}
+				else {
+					index = partition.getmFloor();
+				}
+			}
+			else {
+				index = 0;
+			}
 
 			matrix = new double[doorNum][doorNum];
 
-			//			System.out.println(partition.getmID() + " has door = " + IndoorSpace.iPartitions.get(partition.getmID()).getmDoors().size());
+//			System.out.println(partition.getmID() + " has door = " + IndoorSpace.iPartitions.get(partition.getmID()).getmDoors().size());
 			//			System.out.println("D2dHashMap size = " + partition.getD2dHashMap().size() + " matrix size = " + matrix.length + " * "
 			//					+ "" + matrix[0].length);
 			if (partition.getmType() == RoomType.HALLWAY) {
@@ -67,15 +65,17 @@ public class DistMatrix {
 					for (int j = i + 1; j < doors.size(); j++) {
 						Door door1 = IndoorSpace.iDoors.get(doors.get(i));
 						Door door2 = IndoorSpace.iDoors.get(doors.get(j));
-						double distance = (double) hallwayDistMatrix.get(door1.getX() + "." + door1.getY() + "-" + door2.getX() + "." + door2.getY());
+//						System.out.println("door1: " + door1.getmID() + " door2: " + door2.getmID());
+						double distance = (double) GenTopology.hallwayDistMatrix_floor.get(index).get(door1.getX() + "." + door1.getY() + "-" + door2.getX() + "." + door2.getY());
 						matrix[i][j] = distance;
 						matrix[j][i] = distance;
 					}
 				}
-			} else {
+			}
+			else {
 				Iterator it = partition.getD2dHashMap().entrySet().iterator();
 				while (it.hasNext()) {
-					HashMap.Entry pair = (HashMap.Entry) it.next();
+					HashMap.Entry pair = (HashMap.Entry)it.next();
 
 					// get the key and value
 					String key = (String) pair.getKey();
@@ -88,7 +88,7 @@ public class DistMatrix {
 					int index2 = partition.getDoorIndex(doorID[1]);
 
 					// put the distance into matrix
-					if (index1 != -1 && index2 != -1 && matrix[index1][index2] == 0.0) {
+					if(index1 != -1 && index2 != -1 && matrix[index1][index2] == 0.0) {
 						matrix[index1][index2] = distance;
 						matrix[index2][index1] = distance;
 					} else {

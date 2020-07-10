@@ -21,7 +21,7 @@ import java.util.List;
  * <h>DataGen</h>
  * to generate the data
  *
- * @author feng zijin
+ * @author feng zijin, Tiantian Liu
  *
  */
 public class DataGen {
@@ -364,9 +364,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the right part
@@ -378,9 +378,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the bottom part
@@ -393,9 +393,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the left part
@@ -407,9 +407,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 		}
 	}
@@ -434,9 +434,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the right part
@@ -448,9 +448,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the bottom part
@@ -463,9 +463,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the left part
@@ -477,9 +477,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 		}
 	}
@@ -505,9 +505,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the right part
@@ -519,9 +519,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the bottom part
@@ -534,9 +534,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 
 			// on the left part
@@ -548,9 +548,9 @@ public class DataGen {
 
 				if (IndoorSpace.iDoors.contains(aDoor)) ;
 				IndoorSpace.iDoors.add(aDoor);
-				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//				System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//						+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 			}
 		}
 	}
@@ -858,9 +858,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 
 				// on the right part
@@ -871,9 +871,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 
 				// on the bottom part
@@ -885,9 +885,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 
 				// on the left part
@@ -899,9 +899,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 			}
 		}
@@ -924,9 +924,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 
 				// on the right part
@@ -938,9 +938,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 
 				// on the bottom part
@@ -954,9 +954,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 
 				// on the left part
@@ -968,9 +968,9 @@ public class DataGen {
 
 					if (IndoorSpace.iDoors.contains(aDoor)) ;
 					IndoorSpace.iDoors.add(aDoor);
-					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
-							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
+//					System.out.println("partition " + partitionNo + " has door " + (IndoorSpace.iDoors.size()) + " at ("
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getX() + ", "
+//							+ IndoorSpace.iDoors.get(IndoorSpace.iDoors.size() - 1).getY() + ")");
 				}
 			}
 		}

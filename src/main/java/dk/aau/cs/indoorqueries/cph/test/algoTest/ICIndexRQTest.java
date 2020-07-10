@@ -106,28 +106,28 @@ public class ICIndexRQTest {
             if (count != 1) System.out.println("something wrong with count " + partition.getmID());
         }
 
-        System.out.println("size = " + tree.size());
-        System.out.println("entries = " + tree.countEntries());
-        System.out.println("total boxes size = " + boxes.size());
-        for (int i = 0; i < boxes.size(); i++) {
-            System.out.println();
+//        System.out.println("size = " + tree.size());
+//        System.out.println("entries = " + tree.countEntries());
+//        System.out.println("total boxes size = " + boxes.size());
+//        for (int i = 0; i < boxes.size(); i++) {
+//            System.out.println();
+//
+//            Box box = boxes.get(i);
+//            System.out.println("Box " + box.cornerToString());
+//
+//            TreeNode node = box.getmNode();
+//            System.out.println("Node " + node.cornerToString() + " id = " + node.getmID());
+//
+//            Partition partition = node.getmPartition();
+//            System.out.println("Partition " + partition.cornerToString3D() + " id = " + partition.getmID());
+//        }
 
-            Box box = boxes.get(i);
-            System.out.println("Box " + box.cornerToString());
 
-            TreeNode node = box.getmNode();
-            System.out.println("Node " + node.cornerToString() + " id = " + node.getmID());
-
-            Partition partition = node.getmPartition();
-            System.out.println("Partition " + partition.cornerToString3D() + " id = " + partition.getmID());
-        }
-
-
-        for (int depth = 0; depth <= 10; depth++) {
-            System.out.println("depth");
-            print(tree.root().get(), depth);
-            //System.out.println("depth file written " + depth);
-        }
+//        for (int depth = 0; depth <= 10; depth++) {
+//            System.out.println("depth");
+//            print(tree.root().get(), depth);
+//            //System.out.println("depth file written " + depth);
+//        }
 
 
         String fileInput = System.getProperty("user.dir") + "/source.r";
@@ -152,6 +152,6 @@ public class ICIndexRQTest {
 //        }
 
         ICIndex_RQ icIndex_rq = new ICIndex_RQ();
-        icIndex_rq.iRQ(ps, 1000, tree);
+        icIndex_rq.iRQ(ps, 300, tree);
     }
 }

@@ -1079,7 +1079,7 @@ public class RQ {
     public static void main(String[] arg) throws IOException {
         RQ rq = new RQ();
         // range
-//        String fileName = "/RQ_range.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/RQ_range.csv";
 //        rq.IDModel_rq("range", fileName, 1500);
 //        rq.IDMatrix_rq("range", fileName, 1500);
 //        rq.ICIndex_rq("range", fileName, 1500);
@@ -1087,7 +1087,7 @@ public class RQ {
 //        rq.VIPtree_rq("range", fileName, 1500);
 
 //        // objectNum
-//        String fileName = "/RQ_objectNum.csv";
+//        String fileName = "/results/" + DataGenConstant.dataset + "/RQ_objectNum.csv";
 //        rq.IDModel_rq("objectNum", fileName, 2500);
 //        rq.IDMatrix_rq("objectNum", fileName, 2500);
 //        rq.ICIndex_rq("objectNum", fileName, 2500);
@@ -1095,7 +1095,7 @@ public class RQ {
 //        rq.VIPtree_rq("objectNum", fileName, 2500);
 
         // diType
-        String fileName = "/diType_RQ";
+        String fileName = "/results/" + DataGenConstant.dataset + "/diType_RQ";
         rq.IDModel_rq("diType", fileName, 1500);
 //        rq.IDMatrix_rq("diType", fileName, 1500);
 //        rq.ICIndex_rq("diType", fileName, 1500);

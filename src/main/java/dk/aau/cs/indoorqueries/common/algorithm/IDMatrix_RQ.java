@@ -1,12 +1,27 @@
 package dk.aau.cs.indoorqueries.common.algorithm;
 
 import dk.aau.cs.indoorqueries.common.indoorEntitity.*;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
+import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Algorithm of processing rq using IDMatrix
+ * @author Tiantian Liu
+ */
 public class IDMatrix_RQ {
+    /**
+     * process rq using IDMatrix
+     * @param q
+     * @param r
+     * @param indexMatrix
+     * @param d2dDistMap
+     * @return
+     * @throws IOException
+     */
     public ArrayList<Integer> rangeQuery(Point q, double r, ArrayList<ArrayList<ArrayList<Double>>> indexMatrix, HashMap<String, Double> d2dDistMap) throws IOException {
         ArrayList<Integer> R = new ArrayList<>();
         int[] isParVisited = new int[IndoorSpace.iPartitions.size()];
@@ -51,6 +66,12 @@ public class IDMatrix_RQ {
         return R;
     }
 
+    /**
+     * get objects within r from a point
+     * @param q
+     * @param r
+     */
+
     public ArrayList<Integer> rangeSearch(ArrayList<Integer> objects, Point q, double r) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -64,6 +85,12 @@ public class IDMatrix_RQ {
         return canObjects;
     }
 
+    /**
+     * get objects within r from a door
+     * @param objects
+     * @param r
+     * @param R
+     */
     public ArrayList<Integer> rangeSearch(ArrayList<Integer> objects, Door d, double r, ArrayList<Integer> R) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -88,6 +115,7 @@ public class IDMatrix_RQ {
             Partition par = IndoorSpace.iPartitions.get(pars.get(i));
             if (point.getX() >= par.getX1() && point.getX() <= par.getX2() && point.getY() >= par.getY1() && point.getY() <= par.getY2()) {
                 partitionId = par.getmID();
+                if (DataGenConstant.dataset.equals("MZB") && IndoorSpace.iPartitions.get(partitionId).getmType() == RoomType.HALLWAY) continue;
                 return partitionId;
             }
         }

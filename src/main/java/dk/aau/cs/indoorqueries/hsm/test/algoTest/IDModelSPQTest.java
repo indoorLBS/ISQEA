@@ -18,16 +18,15 @@ import java.io.IOException;
 
 public class IDModelSPQTest {
     public static void main(String args[]) throws IOException {
-//        DataGen dataGen = new DataGen();
-//        dataGen.genAllData();
+
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();
         dateGenReadMen.dataGen();
 
         GenTopology genTopology = new GenTopology();
         genTopology.genTopology();
 
-        ObjectGen objectGen = new ObjectGen();
-        objectGen.genAllObject(2500);
+//        ObjectGen objectGen = new ObjectGen();
+//        objectGen.genAllObject(2500);
 
         Point ps = new Point(1450, 1650, 0);
         Point pt = new Point(1450, 1650, 6);

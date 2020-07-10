@@ -5,11 +5,24 @@ import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Point;
 import dk.aau.cs.indoorqueries.common.utilities.Constant;
+import dk.aau.cs.indoorqueries.common.utilities.DataGenConstant;
+import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Algorithm of processing spq using ICIndex
+ * @author Tiantian Liu
+ */
 public class ICIndex_SPQ {
+
+    /**
+     * process spq using ICIndex
+     * @param ps
+     * @param pt
+     * @return
+     */
     public String pt2ptDistance3(Point ps, Point pt) {
         int visitDoors = 0;
         int doorSize = IndoorSpace.iDoors.size();
@@ -202,6 +215,7 @@ public class ICIndex_SPQ {
             Partition par = IndoorSpace.iPartitions.get(pars.get(i));
             if (point.getX() >= par.getX1() && point.getX() <= par.getX2() && point.getY() >= par.getY1() && point.getY() <= par.getY2()) {
                 partitionId = par.getmID();
+                if (DataGenConstant.dataset.equals("MZB") && IndoorSpace.iPartitions.get(partitionId).getmType() == RoomType.HALLWAY) continue;
                 return partitionId;
             }
         }
@@ -216,6 +230,13 @@ public class ICIndex_SPQ {
         dist = Math.sqrt(Math.pow(point.getX() - door.getX(), 2) + Math.pow(point.getY() - door.getY(), 2));
         return dist;
     }
+
+    /**
+     * calculate distance between two points in the same partition
+     * @param p1
+     * @param p2
+     * @return
+     */
 
     public double distPoint2Point(Point p1, Point p2) {
         double dist = 0;

@@ -4,11 +4,13 @@ import com.github.davidmoten.rtree3d.*;
 import com.github.davidmoten.rtree3d.geometry.Box;
 import com.github.davidmoten.rtree3d.geometry.Geometry;
 import com.github.davidmoten.rtree3d.geometry.Point;
+import dk.aau.cs.indoorqueries.common.algorithm.ICIndex_KNN;
 import dk.aau.cs.indoorqueries.common.iDModel.GenTopology;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.rStarTree3D.TreeNode;
 import dk.aau.cs.indoorqueries.cph.datagenerate.CPHDataGenRead;
+import dk.aau.cs.indoorqueries.cph.datagenerate.ObjectGen;
 import rx.Observable;
 
 import java.io.FileNotFoundException;
@@ -146,11 +148,11 @@ public class ICIndexKNNTest {
         Runtime.getRuntime().exec("/bin/sh R CMD BATCH " + fileInput);
         System.out.println("png");
 
-//        ObjectGen objectGen = new ObjectGen();
-//        objectGen.readObjects(1500);
-//
-//        indoor_entitity.Point ps = new indoor_entitity.Point(20, 200, 0);
-//        indoor_entitity.Point pt = new indoor_entitity.Point(250, 400, 0);
+        ObjectGen objectGen = new ObjectGen();
+        objectGen.readObjects(1500);
+
+        dk.aau.cs.indoorqueries.common.indoorEntitity.Point ps = new dk.aau.cs.indoorqueries.common.indoorEntitity.Point(20, 200, 0);
+        Point pt = new Point(250, 400, 0);
 
 //        for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
 //            IndoorObject ob = IndoorSpace.iObject.get(i);
@@ -163,7 +165,7 @@ public class ICIndexKNNTest {
 //            System.out.println("parId: " + i + " parObjects: " + parObjects);
 //        }
 
-//        ICIndex_KNN icIndex_knn = new ICIndex_KNN();
-//        icIndex_knn.iKNN(ps, 3, tree);
+        ICIndex_KNN icIndex_knn = new ICIndex_KNN();
+        icIndex_knn.iKNN(ps, 3, tree);
     }
 }

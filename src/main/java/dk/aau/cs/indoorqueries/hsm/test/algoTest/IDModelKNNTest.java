@@ -32,7 +32,6 @@ public class IDModelKNNTest {
         objectGen.readObjects(1500);
 
         Point ps = new Point(1450, 1650, 0);
-        Point pt = new Point(15, 25, 13);
 
         for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
             IndoorObject ob = IndoorSpace.iObject.get(i);

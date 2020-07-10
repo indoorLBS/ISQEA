@@ -27,7 +27,8 @@ public class IDModelSPQTest {
 //        objectGen.readObjects(1500);
 
         Point ps = new Point(2, 12, 0);
-        Point pt = new Point(90, 18, 0);
+        Point pt = new Point(57, 4, 2);
+
 
         IDModel_SPQ idModel_spq = new IDModel_SPQ();
         idModel_spq.pt2ptDistance3(ps, pt);
