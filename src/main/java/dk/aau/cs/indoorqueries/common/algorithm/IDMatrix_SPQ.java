@@ -17,7 +17,6 @@ import java.util.HashMap;
  *
  * @author Tiantian Liu
  */
-
 public class IDMatrix_SPQ {
     /**
      * process spq using IDMatrix

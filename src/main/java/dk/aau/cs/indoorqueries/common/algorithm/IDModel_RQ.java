@@ -13,7 +13,6 @@ import java.util.Arrays;
  *
  * @author Tiantian Liu
  */
-
 public class IDModel_RQ {
 
     /**
@@ -111,7 +110,6 @@ public class IDModel_RQ {
      * @param q
      * @param r
      */
-
     public ArrayList<Integer> rangeSearch(ArrayList<Integer> objects, Point q, double r) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {

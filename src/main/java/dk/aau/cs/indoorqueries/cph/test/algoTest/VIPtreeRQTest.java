@@ -10,6 +10,10 @@ import dk.aau.cs.indoorqueries.cph.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
+/**
+ * test RQ using VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         CPHDataGenRead dateGenReadMen = new CPHDataGenRead();

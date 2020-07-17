@@ -7,8 +7,10 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
+/**
+ * test VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeTest {
     public static void main(String[] arg) throws IOException {
         Runtime runtime = Runtime.getRuntime();

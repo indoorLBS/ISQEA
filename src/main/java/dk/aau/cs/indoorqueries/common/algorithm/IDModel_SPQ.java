@@ -16,7 +16,6 @@ import java.util.Arrays;
  *
  * @Author Tiantian Liu
  */
-
 public class IDModel_SPQ {
 
     /**
@@ -239,7 +238,6 @@ public class IDModel_SPQ {
      * @param p2
      * @return
      */
-
     public double distPoint2Point(Point p1, Point p2) {
         double dist = 0;
         dist = Math.sqrt(Math.pow(p1.getX() - p2.getX(), 2) + Math.pow(p1.getY() - p2.getY(), 2));

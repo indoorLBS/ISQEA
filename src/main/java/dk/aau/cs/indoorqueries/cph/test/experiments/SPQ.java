@@ -22,8 +22,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-//import datagenerate.DataGen;
-
+/**
+ * expriments for SPQ
+ * @author Tiantian Liu
+ */
 public class SPQ {
     public static double distDefault = 1500;
 

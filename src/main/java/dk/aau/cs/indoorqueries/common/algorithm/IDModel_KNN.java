@@ -113,7 +113,6 @@ public class IDModel_KNN {
      * @param q
      * @param k
      */
-
     public void calDist(ArrayList<Integer> objects, Point q, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -132,7 +131,6 @@ public class IDModel_KNN {
      * @param d
      * @param k
      */
-
     public void calDist(ArrayList<Integer> objects, Door d, double curDist, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -153,7 +151,6 @@ public class IDModel_KNN {
      * @param dist
      * @param k
      */
-
     public void addObToKlist(int objectId, double dist, int k) {
         if (kObjects == null || kObjects.size() == 0) {
             kObjects.add(new ArrayList<>(Arrays.asList((double) objectId, dist)));
@@ -217,7 +214,6 @@ public class IDModel_KNN {
      * @param k
      * @return
      */
-
     public double getKBound(int k) {
         double kBound = Constant.large;
         if (kObjects == null) return kBound;

@@ -23,6 +23,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * expriments for KNNQ
+ * @author Tiantian Liu
+ */
 public class KNNQ {
     public static int kDefault = 10;
 

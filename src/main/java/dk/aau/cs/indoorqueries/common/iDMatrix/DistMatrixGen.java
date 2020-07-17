@@ -24,7 +24,6 @@ import java.util.Scanner;
  *
  * @author Tiantian Liu
  */
-
 public class DistMatrixGen {
     private static String d2dDistFile = System.getProperty("user.dir") + "/distanceMatrix/" + DataGenConstant.dataset + "/d2dDistMatrix_floor_" + DataGenConstant.nFloor + "_dataType_" + DataGenConstant.dataType + "_diType_" + DataGenConstant.divisionType + ".txt";
     public static HashMap<String, Double> d2dDistMap = new HashMap<String, Double>();        // the distance between two doors
@@ -55,7 +54,6 @@ public class DistMatrixGen {
     /**
      * generate door to door distance matrix
      */
-
     public void d2dDistMatrixGen() {
         String result = "";
         for (int i = 0; i < IndoorSpace.iDoors.size(); i++) {

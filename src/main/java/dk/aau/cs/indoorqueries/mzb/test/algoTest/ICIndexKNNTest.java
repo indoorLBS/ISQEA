@@ -19,6 +19,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+/**
+ * test KNNQ using ICIndex
+ * @author Tiantian Liu
+ */
 public class ICIndexKNNTest {
     private static <T extends Geometry> void print(Node<Integer, Box> node, int depth)
             throws FileNotFoundException {

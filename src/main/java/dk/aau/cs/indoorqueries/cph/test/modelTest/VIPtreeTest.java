@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-//import datagenerate.DataGen;
-
+/**
+ * test VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeTest {
     public static void main(String[] arg) throws IOException {
         Runtime runtime = Runtime.getRuntime();

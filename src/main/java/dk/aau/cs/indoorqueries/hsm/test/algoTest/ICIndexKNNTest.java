@@ -16,8 +16,11 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-//import datagenerate.DataGen;
 
+/**
+ * test KNNQ using ICIndex
+ * @author Tiantian Liu
+ */
 public class ICIndexKNNTest {
     private static <T extends Geometry> void print(Node<Integer, Box> node, int depth)
             throws FileNotFoundException {
@@ -146,22 +149,6 @@ public class ICIndexKNNTest {
         Runtime.getRuntime().exec("/bin/sh R CMD BATCH " + fileInput);
         System.out.println("png");
 
-//        ObjectGen objectGen = new ObjectGen();
-//        objectGen.readObjects(1500);
-//
-//        indoor_entitity.Point ps = new indoor_entitity.Point(1450, 1650, 0);
-//        indoor_entitity.Point pt = new indoor_entitity.Point(15, 25, 13);
-//
-//        for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
-//            IndoorObject ob = IndoorSpace.iObject.get(i);
-//            System.out.println("objectID: " + ob.getObjectId() + ", x: " + ob.getObjectX() + ", y: " + ob.getObjectY() + ", floor: " + ob.getoFloor() + ", parId: " + ob.getParId());
-//        }
-//
-//        for (int i = 0; i < 32; i++) {
-//            Partition par = IndoorSpace.iPartitions.get(i);
-//            ArrayList<Integer> parObjects = par.getmObjects();
-//            System.out.println("parId: " + i + " parObjects: " + parObjects);
-//        }
 //
 //        ICIndex_KNN icIndex_knn = new ICIndex_KNN();
 //        icIndex_knn.iKNN(ps, 3, tree);

@@ -14,6 +14,10 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.ObjectGen;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * test KNNQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeKNNTest {
     public static void main(String[] arg) throws IOException {
         MZBDataGenRead dateGenReadMen = new MZBDataGenRead();
@@ -51,8 +55,5 @@ public class IPtreeKNNTest {
 
         IPtree_KNN iPtree_knn = new IPtree_KNN();
         iPtree_knn.iptreeKNN(ps, 3, ipTree);
-
-
     }
-
 }

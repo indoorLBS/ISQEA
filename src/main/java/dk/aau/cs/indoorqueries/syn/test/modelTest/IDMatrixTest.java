@@ -11,11 +11,10 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
- * dk.aau.cs.indoorqueries.test IDMatrix
+ * test IDMatrix
  *
  * @author Tiantian Liu
  */
-
 public class IDMatrixTest {
     public static void main(String arg[]) throws IOException {
         DataGen dataGen = new DataGen();

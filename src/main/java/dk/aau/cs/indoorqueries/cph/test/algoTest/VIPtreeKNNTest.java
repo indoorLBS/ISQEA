@@ -10,8 +10,11 @@ import dk.aau.cs.indoorqueries.cph.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
 
+/**
+ * test KNNQ using VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeKNNTest {
     public static void main(String[] arg) throws IOException {
         CPHDataGenRead dateGenReadMen = new CPHDataGenRead();

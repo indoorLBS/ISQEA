@@ -9,6 +9,10 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * test SPQ using IDMatrix
+ * @author Tiantian Liu
+ */
 public class IDMatrixSPQTest {
     public static void main(String[] arg) throws IOException {
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();
@@ -27,7 +31,5 @@ public class IDMatrixSPQTest {
         Point pt = new Point(1450, 1650, 6);
         IDMatrix_SPQ idMatrix_spq = new IDMatrix_SPQ();
         idMatrix_spq.p2pDistance(ps, pt, d2dDistMap, d2dRouteMap);
-
-
     }
 }

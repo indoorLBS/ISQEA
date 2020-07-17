@@ -10,8 +10,10 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
+/**
+ * test SPQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeSPQTest {
     public static void main(String[] arg) throws IOException {
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();
@@ -34,6 +36,4 @@ public class IPtreeSPQTest {
         IPtree_SPQ iPtree_spq = new IPtree_SPQ();
         iPtree_spq.ipTreeSPQ(ps, pt, ipTree);
     }
-
-
 }

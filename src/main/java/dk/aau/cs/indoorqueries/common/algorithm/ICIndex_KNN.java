@@ -17,7 +17,6 @@ import static org.apache.commons.lang3.math.NumberUtils.min;
  * algorithm of processing knnq using ICIndex
  * @author Tiantian Liu
  */
-
 public class ICIndex_KNN {
     public static ArrayList<Integer> R_objects = new ArrayList<>();
     public static ArrayList<Integer> R_partitions = new ArrayList<>();
@@ -30,7 +29,6 @@ public class ICIndex_KNN {
      * @param T
      * @return
      */
-
     public ArrayList<ArrayList<Double>> iKNN(Point q, int k, RTree<Integer, Box> T) {
         kObjects = new ArrayList<>();
 //        R_partitions = new ArrayList<>();
@@ -101,7 +99,6 @@ public class ICIndex_KNN {
      * @param dist
      * @param k
      */
-
     public void addObToKlist(int objectId, double dist, int k) {
         if (kObjects.size() == 0) {
             kObjects.add(new ArrayList<>(Arrays.asList((double) objectId, dist)));
@@ -165,7 +162,6 @@ public class ICIndex_KNN {
      * @param k
      * @return
      */
-
     public double getKBound(int k) {
         double kBound = Constant.large;
         if (kObjects.size() == k) {
@@ -607,7 +603,6 @@ public class ICIndex_KNN {
      * @param T
      * @return
      */
-
     public ArrayList<ArrayList<Double>> knn(Point q, int k, RTree<Integer, Box> T) {
         kObjects = new ArrayList<>();
         int[] isParVisited = new int[IndoorSpace.iPartitions.size()];
@@ -698,7 +693,6 @@ public class ICIndex_KNN {
      * @param q
      * @param k
      */
-
     public void calDist(ArrayList<Integer> objects, Point q, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -717,7 +711,6 @@ public class ICIndex_KNN {
      * @param d
      * @param k
      */
-
     public void calDist(ArrayList<Integer> objects, Door d, double curDist, int k) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {

@@ -661,7 +661,6 @@ public class VIPtree_KNN {
      * @param k
      * @return
      */
-
     public double getKBound(int k) {
         double kBound = Constant.large;
         if (kObjects.size() == k) {
@@ -680,7 +679,6 @@ public class VIPtree_KNN {
      * @param par
      * @param k
      */
-
     public void calDist(LeafNode node, Point q, Partition par, int k) {
 //        System.out.println("nodeId: " + node.getNodeID());
         ArrayList<Integer> objects = node.getAllObjects();
@@ -716,6 +714,4 @@ public class VIPtree_KNN {
             }
         }
     }
-
-
 }

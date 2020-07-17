@@ -8,12 +8,10 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
 /**
+ * test IP-Tree
  * @author Tiantian Liu
  */
-
 public class IPtreeTest {
     public static void main(String args[]) throws IOException {
         Runtime runtime = Runtime.getRuntime();

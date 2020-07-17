@@ -10,6 +10,10 @@ import dk.aau.cs.indoorqueries.syn.datagenerate.DataGen;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * test SPQ using IDMatrix
+ * @author Tiantian Liu
+ */
 public class IDMatrixSPQTest {
     public static void main(String[] arg) throws IOException {
         DataGen dataGen = new DataGen();
@@ -29,7 +33,5 @@ public class IDMatrixSPQTest {
 
         IDMatrix_SPQ idMatrix_spq = new IDMatrix_SPQ();
         idMatrix_spq.p2pDistance(ps, pt, d2dDistMap, d2dRouteMap);
-
-
     }
 }

@@ -43,7 +43,6 @@ public class IndoorObject {
      * @param floor
      * @param parId
      */
-
     public IndoorObject(int objectId, int x, int y, int floor, int parId) {
         this.objectId = objectId;
         this.objectX = x;
@@ -106,7 +105,6 @@ public class IndoorObject {
      *
      * @param ob
      */
-
     public void findParIdSYN(IndoorObject ob) {
         int x = ob.getObjectX();
         int y = ob.getObjectY();
@@ -130,7 +128,6 @@ public class IndoorObject {
      *
      * @param ob
      */
-
     public int findParId(IndoorObject ob) {
         int parId = -1;
         int x = ob.getObjectX();

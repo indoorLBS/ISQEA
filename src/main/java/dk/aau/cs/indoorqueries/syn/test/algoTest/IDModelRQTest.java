@@ -14,11 +14,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * dk.aau.cs.indoorqueries.test IDMatrixRQ
+ * test RQ using IDModel
  *
  * @author Tiantian Liu
  */
-
 public class IDModelRQTest {
     public static void main(String args[]) throws IOException {
         DataGen dataGen = new DataGen();

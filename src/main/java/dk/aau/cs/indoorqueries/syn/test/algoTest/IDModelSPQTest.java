@@ -10,11 +10,10 @@ import dk.aau.cs.indoorqueries.syn.datagenerate.ObjectGen;
 import java.io.IOException;
 
 /**
- * dk.aau.cs.indoorqueries.test IDModelSPQ
+ * test SPQ using IDModel
  *
  * @author Tiantianliu
  */
-
 public class IDModelSPQTest {
     public static void main(String args[]) throws IOException {
         DataGen dataGen = new DataGen();

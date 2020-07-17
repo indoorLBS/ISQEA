@@ -10,9 +10,9 @@ import dk.aau.cs.indoorqueries.syn.datagenerate.DataGen;
 import java.io.IOException;
 
 /**
+ * test IP-Tree
  * @author Tiantian Liu
  */
-
 public class IPtreeTest {
     public static void main(String args[]) throws IOException {
         Runtime runtime = Runtime.getRuntime();

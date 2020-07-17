@@ -12,14 +12,11 @@ import dk.aau.cs.indoorqueries.cph.datagenerate.ObjectGen;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//import datagenerate.DataGen;
-
 /**
- * test IDMatrixRQ
+ * test RQ using IDModel
  *
  * @author Tiantian Liu
  */
-
 public class IDModelRQTest {
     public static void main(String args[]) throws IOException {
         CPHDataGenRead dateGenReadMen = new CPHDataGenRead();

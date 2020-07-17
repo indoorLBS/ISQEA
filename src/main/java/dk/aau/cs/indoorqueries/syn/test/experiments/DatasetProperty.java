@@ -11,6 +11,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * test the property of dataset
+ * @author Tiantian Liu
+ */
 public class DatasetProperty {
     public static void main(String[] arg) throws IOException {
         DataGen dataGen = new DataGen();

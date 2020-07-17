@@ -10,8 +10,10 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
+/**
+ * test RQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();
@@ -32,8 +34,6 @@ public class IPtreeRQTest {
 
         ipTree.objectPro();
 
-
-//
         Point ps = new Point(1450, 1650, 2);
 
         IPtree_RQ iPtree_rq = new IPtree_RQ();

@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * read data
+ * @author Tiantian Liu
+ */
 public class HSMDataGenRead {
 
     public static String inputDoor = System.getProperty("user.dir") + "/inputfiles/HSM/Door.txt";

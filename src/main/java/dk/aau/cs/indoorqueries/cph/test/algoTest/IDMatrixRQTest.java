@@ -11,8 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//import datagenerate.DataGen;
-
+/**
+ * test RQ using IDMatrix
+ * @author Tiantian Liu
+ */
 public class IDMatrixRQTest {
     public static void main(String[] arg) throws IOException {
         CPHDataGenRead dateGenReadMen = new CPHDataGenRead();

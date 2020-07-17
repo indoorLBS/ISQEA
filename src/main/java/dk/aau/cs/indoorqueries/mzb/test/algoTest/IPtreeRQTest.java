@@ -10,6 +10,10 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
+/**
+ * test RQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         MZBDataGenRead dateGenReadMen = new MZBDataGenRead();
@@ -29,7 +33,6 @@ public class IPtreeRQTest {
         ipTree.initTree();
 
         ipTree.objectPro();
-
 
         Point ps = new Point(2, 12, 0);
         Point pt = new Point(15, 25, 13);

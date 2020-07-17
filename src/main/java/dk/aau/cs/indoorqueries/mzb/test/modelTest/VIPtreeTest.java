@@ -7,6 +7,10 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.MZBDataGenRead;
 
 import java.io.IOException;
 
+/**
+ * test VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeTest {
     public static void main(String[] arg) throws IOException {
         Runtime runtime = Runtime.getRuntime();

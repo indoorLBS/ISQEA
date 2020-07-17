@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * test RQ using IDMatrix
+ * @author Tiantian Liu
+ */
 public class IDMatrixRQTest {
     public static void main(String[] arg) throws IOException {
         DataGen dataGen = new DataGen();

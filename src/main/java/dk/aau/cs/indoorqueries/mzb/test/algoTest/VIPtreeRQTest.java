@@ -10,6 +10,10 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
+/**
+ * test RQ using VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         MZBDataGenRead dateGenReadMen = new MZBDataGenRead();

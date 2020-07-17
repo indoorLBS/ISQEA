@@ -171,9 +171,6 @@ public class Topology {
 			TopologyElement topologyElement = connectivityTierOut.get(i);
 			result.add(topologyElement.getmParID());
 		}
-
 		return result;
 	}
-
-
 }

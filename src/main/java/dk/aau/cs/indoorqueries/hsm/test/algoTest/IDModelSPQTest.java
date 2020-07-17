@@ -8,14 +8,11 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
 /**
- * test IDModelSPQ
+ * test SPQ using IDModel
  *
  * @author Tiantianliu
  */
-
 public class IDModelSPQTest {
     public static void main(String args[]) throws IOException {
 

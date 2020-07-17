@@ -1,11 +1,5 @@
 package dk.aau.cs.indoorqueries.mzb.test.modelTest;
 
-/**
- * test model construction
- *
- * @Author Tiantian Liu
- */
-
 import dk.aau.cs.indoorqueries.common.iDModel.GenTopology;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
@@ -16,6 +10,11 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.MZBDataGenRead;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * test IDModel
+ *
+ * @Author Tiantian Liu
+ */
 public class IDModelTest {
     public static void main(String arg[]) throws IOException {
 //        DataGen dataGen = new DataGen();

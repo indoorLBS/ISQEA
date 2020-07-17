@@ -15,6 +15,10 @@ import dk.aau.cs.indoorqueries.syn.datagenerate.ObjectGen;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * test KNNQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeKNNTest {
     public static void main(String[] arg) throws IOException {
         DataGen dataGen = new DataGen();

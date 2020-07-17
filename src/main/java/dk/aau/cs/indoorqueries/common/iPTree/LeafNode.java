@@ -10,6 +10,10 @@ import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * leafNode of VIP/IP-Tree
+ * @author ZijinFeng, Tiantian Liu
+ */
 public class LeafNode implements Node {
 
 	private boolean hasCrucial = false;
@@ -58,43 +62,83 @@ public class LeafNode implements Node {
 		this.hasCrucial = another.hasCrucial();
 	}
 
+	/**
+	 * get node ID
+	 * @return
+	 */
 	public int getNodeID() {
 		return this.nodeID;
 	}
 
+	/**
+	 * set node ID
+	 * @param ID
+	 */
 	public void setNodeID(int ID) {
 		this.nodeID = ID;
 	}
 
+	/**
+	 * set degree
+	 * @param degree
+	 */
 	public void setDegree(int degree) {
 		this.degree = degree;
 	}
 
+	/**
+	 * get degree
+	 * @return
+	 */
 	public int getDegree() {
 		return degree;
 	}
 
+	/**
+	 * set parent node ID
+	 * @param parentNodeID
+	 */
 	public void setParentNodeID(int parentNodeID) {
 		this.parentNodeID = parentNodeID;
 	}
 
+	/**
+	 * get parent node ID
+	 * @return
+	 */
 	public int getParentNodeID() {
 		return this.parentNodeID;
 	}
 
+	/**
+	 * add adjacent node
+	 * @param nodeID
+	 */
 	public void addAdjacentNode(int nodeID) {
 		if (!adjacentNodes.contains(nodeID))
 			adjacentNodes.add(nodeID);
 	}
 
+	/**
+	 * get number of adjacent nodes
+	 * @return
+	 */
 	public int getAdjacentNodeNo() {
 		return adjacentNodes.size();
 	}
 
+	/**
+	 * get adjacent nodes
+	 * @return
+	 */
 	public ArrayList<Integer> getAdjacentNodes() {
 		return this.adjacentNodes;
 	}
 
+	/**
+	 * set partitions
+	 * @param partitions
+	 */
 	public void setPartitions(ArrayList<Integer> partitions) {
 		this.mPartitions = partitions;
 
@@ -112,6 +156,10 @@ public class LeafNode implements Node {
 		}
 	}
 
+	/**
+	 * add partition to this node
+	 * @param mID
+	 */
 	public void addPartition(int mID) {
 		if (!mPartitions.contains(mID)) {
 			mPartitions.add(mID);
@@ -125,11 +173,16 @@ public class LeafNode implements Node {
 		}
 	}
 
+	/**
+	 * get partitions
+	 * @return
+	 */
 	public ArrayList<Integer> getmPartitions() {
 		return mPartitions;
 	}
 
 	/**
+	 * update boundary
 	 * @param mID
 	 */
 	private void updateBoundary(int mID) {
@@ -149,66 +202,128 @@ public class LeafNode implements Node {
 			z2 = partition.getmFloor();
 	}
 
+	/**
+	 * add access door
+	 * @param doorID
+	 */
 	public void addAccessDoor(int doorID) {
 		if (!accessDoors.contains(doorID))
 			this.accessDoors.add(doorID);
 	}
 
+	/**
+	 * remove access door
+	 * @param doorID
+	 */
 	public void removeAccessDoor(int doorID) {
 		int index = accessDoors.indexOf(doorID);
 		accessDoors.remove(index);
 	}
 
+	/**
+	 * set access doors
+	 * @param accessDoors
+	 */
 	public void setAccessDoors(ArrayList<Integer> accessDoors) {
 		this.accessDoors = accessDoors;
 	}
 
+	/**
+	 * get access doors
+	 * @return
+	 */
 	public ArrayList<Integer> getAccessDoors() {
 		return this.accessDoors;
 	}
 
+	/**
+	 * add internal door
+	 * @param doorID
+	 */
 	public void addInternalDoor(int doorID) {
 		if (!internalDoors.contains(doorID))
 			this.internalDoors.add(doorID);
 	}
 
+	/**
+	 * set internal doors
+	 * @param internalDoors
+	 */
 	public void setInternalDoors(ArrayList<Integer> internalDoors) {
 		this.internalDoors = internalDoors;
 	}
 
+	/**
+	 * get internal doors
+	 * @return
+	 */
 	public ArrayList<Integer> getInternalDoors() {
 		return this.internalDoors;
 	}
 
+	/**
+	 * whether has crucial partition
+	 * @return
+	 */
 	public boolean hasCrucial() {
 		return hasCrucial;
 	}
 
+	/**
+	 * set the node having crucial partition
+	 */
 	public void setHasCrucial() {
 		this.hasCrucial = true;
 		;
 	}
 
+	/**
+	 * get node's type
+	 * @return
+	 */
 	public String getType() {
 		return this.type;
 	}
 
+	/**
+	 * set distance matrix
+	 * @param doorPair
+	 * @param dis
+	 */
 	public void setDisMatrix(String doorPair, String dis) {
 		this.disMatrix.put(doorPair, dis);
 	}
 
+	/**
+	 * set distance matrix
+	 * @param DM
+	 */
 	public void setDistMatrix(HashMap<String, String> DM) {
 		this.disMatrix = DM;
 	}
 
+	/**
+	 * set distance matrix for VIP-tree
+	 * @param DM
+	 */
 	public void setDistMatrixVIP(HashMap<String, String> DM) {
 		this.disMatrixVIP = DM;
 	}
 
+	/**
+	 * get distance matrix for VIP-tree
+	 * @return
+	 */
 	public HashMap<String, String> getDistMatrixVIP() {
 		return this.disMatrixVIP;
 	}
 
+	/**
+	 * get distance matrix of VIP-tree
+	 * @param d1
+	 * @param d2
+	 * @return
+	 */
 	public String getDistVIP(int d1, int d2) {
 		String result = this.disMatrixVIP.get(d1 + "-" + d2);
 		if (result == null) {
@@ -220,6 +335,12 @@ public class LeafNode implements Node {
 		return result;
 	}
 
+	/**
+	 * get the distance between two doors in this node
+	 * @param d1
+	 * @param d2
+	 * @return
+	 */
 	public String getDist(int d1, int d2) {
 		String result = this.disMatrix.get(d1 + "-" + d2);
 		if (result == null) {
@@ -248,10 +369,19 @@ public class LeafNode implements Node {
 //		return  result;
 //	}
 
+	/**
+	 * get distance matrix
+	 * @return
+	 */
 	public HashMap<String, String> getDistMatrix() {
 		return this.disMatrix;
 	}
 
+	/**
+	 * compare to another node
+	 * @param another
+	 * @return
+	 */
 	public int compareTo(Node another) {
 		if (this.getDegree() > another.getDegree()) {
 			return 1;
@@ -268,9 +398,17 @@ public class LeafNode implements Node {
 		}
 	}
 
+	/**
+	 * add children
+	 * @param nodeID
+	 */
 	public void addChildren(int nodeID) {
 	}
 
+	/**
+	 * get children
+	 * @return
+	 */
 	public int getChildrenSize() {
 		return -1;
 	}

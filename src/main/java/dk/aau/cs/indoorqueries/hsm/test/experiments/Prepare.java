@@ -13,8 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//import datagenerate.DataGen;
-
+/**
+ * preparation for expriments
+ * @author Tiantian Liu
+ */
 public class Prepare {
     ArrayList<ArrayList<Point>> pointPair = new ArrayList<>();
 

@@ -52,6 +52,11 @@ public class ObjectGen {
         System.out.println("objects have been saved");
     }
 
+    /**
+     * read objects
+     * @param number
+     * @throws IOException
+     */
     public void readObjects(int number) throws IOException {
         Path path = Paths.get(objectsFile + 2500 + ".txt");
         Scanner scanner = new Scanner(path);

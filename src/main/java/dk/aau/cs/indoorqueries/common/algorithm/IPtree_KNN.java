@@ -26,7 +26,6 @@ public class IPtree_KNN {
      * @param tree
      * @return
      */
-
     public ArrayList<ArrayList<Double>> iptreeKNN(Point q, int k, VIPTree tree) {
         kObjects = new ArrayList<>();
 
@@ -125,7 +124,6 @@ public class IPtree_KNN {
      * @param dist
      * @param k
      */
-
     public void addObToKlist(int objectId, double dist, int k) {
         if (kObjects.size() == 0) {
             kObjects.add(new ArrayList<>(Arrays.asList((double) objectId, dist)));
@@ -201,7 +199,6 @@ public class IPtree_KNN {
      * @param k
      * @return
      */
-
     public double getKBound(int k) {
         double kBound = Constant.large;
         if (kObjects.size() == k) {
@@ -223,7 +220,6 @@ public class IPtree_KNN {
      * @param pointToAllAncestDoorDist
      * @return
      */
-
     public HashMap<Integer, Double> getDistPointToNode(Point point, int qPartitionId, Node node, VIPTree tree, int caseNum, HashMap<Integer, HashMap<Integer, String>> pointToAllAncestDoorDist) {
         HashMap<Integer, Double> result = new HashMap<>();
         ArrayList<Integer> partitions = node.getmPartitions();

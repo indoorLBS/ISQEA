@@ -10,8 +10,10 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
+/**
+ * test KNNQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeKNNTest {
     public static void main(String[] arg) throws IOException {
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();

@@ -10,8 +10,10 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
+/**
+ * test RQ using VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();

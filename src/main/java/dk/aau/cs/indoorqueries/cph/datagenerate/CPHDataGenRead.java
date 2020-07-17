@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * read data
+ * @author Tiantian Liu
+ */
 public class CPHDataGenRead {
 
     public static String inputDoor = System.getProperty("user.dir") + "/inputfiles/CPH/RDoorINFO_diType_" + DataGenConstant.divisionType + ".txt";
@@ -108,212 +112,6 @@ public class CPHDataGenRead {
             }
         }
     }
-
-//    public void dataProcess1() throws IOException {
-//        Path path1 = Paths.get(System.getProperty("user.dir") + "/inputfiles/RParINFO_diType_0.txt");
-//        Scanner scanner1 = new Scanner(path1);
-//
-//        String result = "";
-//        ArrayList<Integer> doors = new ArrayList<>();
-//        while (scanner1.hasNextLine()) {
-//            String line = scanner1.nextLine();
-//            String [] tempArr = line.split(" ");
-//
-//            for (int i = 7; i < tempArr.length; i++) {
-//                int doorId = Integer.parseInt(tempArr[i]);
-//                doors.add(doorId);
-//            }
-//
-//        }
-//        Path path2 = Paths.get(System.getProperty("user.dir") + "/inputfiles/RDoorINFO_diType_1.txt");
-//        Scanner scanner2 = new Scanner(path2);
-//        while (scanner2.hasNextLine()) {
-//            String line = scanner2.nextLine();
-//            String [] tempArr = line.split(" ");
-//            int doorId = Integer.parseInt(tempArr[0]);
-////            System.out.println("doorId: " + doorId);
-////            double x = Double.parseDouble(tempArr[1]);
-////            double y = Double.parseDouble(tempArr[2]);
-////            int floor = Integer.parseInt(tempArr[3]);
-////            Door door = new Door(x, y);
-////            ArrayList<Integer> rooms = new ArrayList<>();
-////            for (int i = 4; i < tempArr.length; i++) {
-////                rooms.add(Integer.parseInt(tempArr[i]));
-////            }
-////            door.setmPartitions(rooms);
-////            door.setmFloor(floor);
-//
-////            IndoorSpace.iDoors.add(door);
-//            if (doors.contains(doorId)) {
-//                result += line + "\n";
-//            }
-//        }
-//
-//        try {
-//            FileWriter fwPar = new FileWriter(System.getProperty("user.dir") + "/inputfiles/RDoorINFO_diType_0.txt");
-//
-//            fwPar.write(result);
-//
-//
-//            fwPar.flush();
-//            fwPar.close();
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//
-//        }
-//    }
-
-//    public void dataProcess() throws IOException {
-//        Path path1 = Paths.get(System.getProperty("user.dir") + "/inputfiles/RParINFO_diType_0.txt");
-//        Scanner scanner1 = new Scanner(path1);
-//
-//        while (scanner1.hasNextLine()) {
-//            String line = scanner1.nextLine();
-//            String [] tempArr = line.split(" ");
-//            int roomId = Integer.parseInt(tempArr[0]);
-//
-//            double x1 = Double.parseDouble(tempArr[1]);
-//            double y1 = Double.parseDouble(tempArr[3]);
-//            double x2 = Double.parseDouble(tempArr[2]);
-//            double y2 = Double.parseDouble(tempArr[4]);
-//            int floor = Integer.parseInt(tempArr[5]);
-//            int roomType = Integer.parseInt(tempArr[6]);
-//
-//            if (x1 > x2) {
-//                double temp = x2;
-//                x2 = x1;
-//                x1 = temp;
-//            }
-//
-//            if (y1 > y2) {
-//                double temp = y2;
-//                y2 = y1;
-//                y1 = temp;
-//            }
-//
-//            Partition par = new Partition(x1, x2, y1, y2, roomType);
-//            par.setmFloor(floor);
-//
-//            for (int i = 7; i < tempArr.length; i++) {
-//                int doorId = Integer.parseInt(tempArr[i]);
-//                par.addDoor(doorId);
-//            }
-//            IndoorSpace.iPartitions.add(par);
-//
-//        }
-//        Path path2 = Paths.get(System.getProperty("user.dir") + "/inputfiles/RDoorINFO_diType_0.txt");
-//        Scanner scanner2 = new Scanner(path2);
-//        while (scanner2.hasNextLine()) {
-//            String line = scanner2.nextLine();
-//            String [] tempArr = line.split(" ");
-//            int doorId = Integer.parseInt(tempArr[0]);
-////            System.out.println("doorId: " + doorId);
-//            double x = Double.parseDouble(tempArr[1]);
-//            double y = Double.parseDouble(tempArr[2]);
-//            int floor = Integer.parseInt(tempArr[3]);
-//            Door door = new Door(x, y);
-//            ArrayList<Integer> rooms = new ArrayList<>();
-//            for (int i = 4; i < tempArr.length; i++) {
-//                rooms.add(Integer.parseInt(tempArr[i]));
-//            }
-//            door.setmPartitions(rooms);
-//            door.setmFloor(floor);
-//
-//            IndoorSpace.iDoors.add(door);
-//        }
-//
-////        // link the floor
-////        Iterator<Partition> itrPar = IndoorSpace.iPartitions.iterator();
-////
-////        while (itrPar.hasNext()) {
-////            Partition curPar = itrPar.next();
-////            Iterator<Door> itrDoor = IndoorSpace.iDoors.iterator();
-////            while (itrDoor.hasNext()) {
-////                Door curDoor = itrDoor.next();
-////                if (curPar.testDoor(curDoor) == true) {
-////                    curPar.addDoor(curDoor.getmID());
-////                    curDoor.addPar(curPar.getmID());
-////                    //System.out.println((curPar.getmID() + 1) + " has door " + (curDoor.getmID() + 1));
-////                }
-////            }
-////        }
-//
-////        // find doors for hallway
-////        Partition hallway = IndoorSpace.iPartitions.get(0);
-////        if (hallway.getmType() != RoomType.HALLWAY) {
-////            System.out.println("Something wrong with hallway");
-////        }
-////        for (int i = 0; i < IndoorSpace.iDoors.size(); i++) {
-////            Door door = IndoorSpace.iDoors.get(i);
-////            ArrayList<Integer> pars = door.getmPartitions();
-////            if (pars.size() < 2) {
-////                hallway.addDoor(i);
-////            }
-////        }
-//
-//        // add hallway to door
-//        Partition hallway = IndoorSpace.iPartitions.get(0);
-//        if (hallway.getmType() != RoomType.HALLWAY) {
-//            System.out.println("Something wrong with hallway");
-//        }
-//        ArrayList<Integer> doors = hallway.getmDoors();
-//        for (int i = 0; i < IndoorSpace.iDoors.size(); i++) {
-//            Door door = IndoorSpace.iDoors.get(i);
-//            if (doors.contains(door.getmID())) {
-//                door.addPar(0);
-//            }
-//        }
-//
-////        try {
-////
-////            FileWriter fwPar = new FileWriter(System.getProperty("user.dir") + "/inputfiles/RParINFO_diType_0.txt");
-////
-////            itrPar = IndoorSpace.iPartitions.iterator();
-////            while (itrPar.hasNext()) {
-////                Partition par = itrPar.next();
-////                String result;
-////                result = par.getmID() + " " + par.getX1() + " " + par.getX2() + " " + par.getY1() + " " + par.getY2() + " " + par.getmFloor() + " " + par.getmType() + " ";
-////                Iterator<Integer> itr = par.getmDoors().iterator();
-////
-////                while (itr.hasNext()) {
-////                    result = result + itr.next() + " ";
-////                }
-////                fwPar.write(result + "\n");
-////
-////            }
-////
-////
-////            fwPar.flush();
-////            fwPar.close();
-////        } catch (IOException e) {
-////            // TODO Auto-generated catch block
-////            e.printStackTrace();
-////
-////        }
-////
-//        try {
-//            FileWriter fwDoor = new FileWriter(System.getProperty("user.dir") + "/inputfiles/RDoorINFO_diType_0.txt");
-//            Iterator<Door> itrDoor = IndoorSpace.iDoors.iterator();
-//            while (itrDoor.hasNext()) {
-//                Door door = itrDoor.next();
-//                String result;
-//                result = door.getmID() + " " + door.getX() + " " + door.getY() + " " + door.getmFloor() + " ";
-//                Iterator<Integer> itr = door.getmPartitions().iterator();
-//
-//                while (itr.hasNext()) {
-//                    result = result + itr.next() + " ";
-//                }
-//                fwDoor.write(result + "\n");
-//            }
-//            fwDoor.flush();
-//            fwDoor.close();
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//
-//    }
 
     /**
      * draws one single floor
@@ -485,12 +283,6 @@ public class CPHDataGenRead {
     public static void main(String args[]) throws IOException {
         CPHDataGenRead dataGen = new CPHDataGenRead();
         dataGen.dataGen();
-//        dataGen.dataProcess1();
-
-//        for(int i = 0; i < IndoorSpace.iDoors.size(); i ++) {
-//            Door door = IndoorSpace.iDoors.get(i);
-//            System.out.println("door " + door.getmID() + " floor " + door.getmType());
-//        dataGen.dataProcess();
         dataGen.drawFloor();
     }
 }

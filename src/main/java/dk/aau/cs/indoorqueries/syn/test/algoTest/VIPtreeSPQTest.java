@@ -10,6 +10,10 @@ import dk.aau.cs.indoorqueries.syn.datagenerate.DataGen;
 
 import java.io.IOException;
 
+/**
+ * test SPQ using VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeSPQTest {
     public static void main(String[] arg) throws IOException {
         DataGen dataGen = new DataGen();

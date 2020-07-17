@@ -22,6 +22,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * expriments for SPQ
+ * @author Tiantian Liu
+ */
 public class SPQ {
     public void IDModel_SPQ(String parameter, String fileName) throws IOException {
         DataGen dataGen = new DataGen();

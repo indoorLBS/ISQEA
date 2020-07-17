@@ -50,6 +50,11 @@ public class ObjectGen {
         System.out.println("objects have been saved");
     }
 
+    /**
+     * read objects
+     * @param number
+     * @throws IOException
+     */
     public void readObjects(int number) throws IOException {
         Path path = Paths.get(objectsFile + 2500 + "_dataType_" + 1 + "_diType_" + DataGenConstant.divisionType + ".txt");
         Scanner scanner = new Scanner(path);
@@ -169,6 +174,11 @@ public class ObjectGen {
         }
     }
 
+    /**
+     * get host partition of a point
+     * @param point
+     * @return
+     */
     public int getPointHostPartition(Point point) {
         int partitionId = -1;
         int floor = point.getmFloor();

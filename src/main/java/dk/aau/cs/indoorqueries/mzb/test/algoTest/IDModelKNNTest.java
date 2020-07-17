@@ -13,11 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * test kNNQ
+ * test kNNQ using IDModel
  *
  * @author Tiantian Liu
  */
-
 public class IDModelKNNTest {
     public static void main(String args[]) throws IOException {
         MZBDataGenRead dateGenReadMen = new MZBDataGenRead();

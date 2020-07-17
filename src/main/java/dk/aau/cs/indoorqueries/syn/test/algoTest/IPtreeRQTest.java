@@ -11,6 +11,10 @@ import dk.aau.cs.indoorqueries.syn.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
+/**
+ * test RQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         DataGen dataGen = new DataGen();
@@ -30,7 +34,6 @@ public class IPtreeRQTest {
         ipTree.initTree();
 
         ipTree.objectPro();
-
 
         Point ps = new Point(20, 20, 0);
         Point pt = new Point(300, 700, 1);

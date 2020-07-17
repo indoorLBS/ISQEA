@@ -23,8 +23,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-//import datagenerate.DataGen;
-
+/**
+ * expriments for KNNQ
+ * @author Tiantian Liu
+ */
 public class KNNQ {
     public int kDefault = 10;
 

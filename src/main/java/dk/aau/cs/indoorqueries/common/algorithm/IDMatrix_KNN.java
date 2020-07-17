@@ -14,7 +14,6 @@ import java.util.HashMap;
  * Algorithm of processing knnq using IDMatrix
  * @author Tiantian Liu
  */
-
 public class IDMatrix_KNN {
     public static ArrayList<ArrayList<Double>> kObjects = new ArrayList<>();
 
@@ -27,7 +26,6 @@ public class IDMatrix_KNN {
      * @return
      * @throws IOException
      */
-
     public ArrayList<ArrayList<Double>> knnQuery(Point q, int k, ArrayList<ArrayList<ArrayList<Double>>> indexMatrix, HashMap<String, Double> d2dDistMap) throws IOException {
 
         kObjects = new ArrayList<>();
@@ -116,7 +114,6 @@ public class IDMatrix_KNN {
      * @param dist
      * @param k
      */
-
     public void addObToKlist(int objectId, double dist, int k) {
         if (kObjects.size() == 0) {
             kObjects.add(new ArrayList<>(Arrays.asList((double) objectId, dist)));
@@ -180,7 +177,6 @@ public class IDMatrix_KNN {
      * @param k
      * @return
      */
-
     public double getKBound(int k) {
         double kBound = Constant.large;
         if (kObjects.size() == k) {

@@ -1,7 +1,5 @@
 package dk.aau.cs.indoorqueries.hsm.test.modelTest;
 
-//import datagenerate.DataGen;
-
 import dk.aau.cs.indoorqueries.common.iDMatrix.DistMatrixGen;
 import dk.aau.cs.indoorqueries.common.iDModel.GenTopology;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;
@@ -13,7 +11,6 @@ import java.io.IOException;
  *
  * @author Tiantian Liu
  */
-
 public class IDMatrixTest {
     public static void main(String arg[]) throws IOException {
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();

@@ -380,7 +380,6 @@ public class IPtree_SPQ {
      * @param tree
      * @return
      */
-
     public ArrayList<Node> commonAncestor(Node leaf_s, Node leaf_e, VIPTree tree) {
         ArrayList<Node> result = new ArrayList<Node>();
         Node temp_s = leaf_s;

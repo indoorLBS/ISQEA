@@ -8,11 +8,10 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.MZBDataGenRead;
 import java.io.IOException;
 
 /**
- * test IDModelSPQ
+ * test SPQ using IDModel
  *
  * @author Tiantianliu
  */
-
 public class IDModelSPQTest {
     public static void main(String args[]) throws IOException {
 //        DataGen dataGen = new DataGen();

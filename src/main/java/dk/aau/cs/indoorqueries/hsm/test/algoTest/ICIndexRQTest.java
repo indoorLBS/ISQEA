@@ -19,8 +19,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-//import datagenerate.DataGen;
-
+/**
+ * test RQ using ICIndex
+ * @author Tiantian Liu
+ */
 public class ICIndexRQTest {
     private static <T extends Geometry> void print(Node<Integer, Box> node, int depth)
             throws FileNotFoundException {
@@ -91,46 +93,7 @@ public class ICIndexRQTest {
 
         System.out.println("tree size = " + tree.size());
 
-//        ArrayList<Box> boxes = new ArrayList<Box>();
-
-//        for (int i = 0; i < IndoorSpace.iPartitions.size(); i++) {
-//            Partition partition = IndoorSpace.iPartitions.get(i);
 //
-//            Observable<Entry<Integer, Box>> entries = tree.search(Point.create(partition.getcenterX(), partition.getcenterY()
-//                    , partition.getmFloor() * 0.1 + 0.05));
-//            int count = entries.count().toBlocking().single();
-//
-//            entries.subscribe(
-//                    e -> boxes.add(e.geometry())
-//            );
-//
-//            if (count != 1) System.out.println("something wrong with count " + partition.getmID());
-//        }
-
-//        System.out.println("size = " + tree.size());
-//        System.out.println("entries = " + tree.countEntries());
-//        System.out.println("total boxes size = " + boxes.size());
-//        for (int i = 0; i < boxes.size(); i++) {
-//            System.out.println();
-//
-//            Box box = boxes.get(i);
-//            System.out.println("Box " + box.cornerToString());
-//
-//            TreeNode node = box.getmNode();
-//            System.out.println("Node " + node.cornerToString() + " id = " + node.getmID());
-//
-//            Partition partition = node.getmPartition();
-//            System.out.println("Partition " + partition.cornerToString3D() + " id = " + partition.getmID());
-//        }
-//
-//
-//        for (int depth = 0; depth <= 10; depth++) {
-//            System.out.println("depth");
-//            print(tree.root().get(), depth);
-//            //System.out.println("depth file written " + depth);
-//        }
-
-
         String fileInput = System.getProperty("user.dir") + "/source.r";
         Runtime.getRuntime().exec("/bin/sh R CMD BATCH " + fileInput);
         System.out.println("png");

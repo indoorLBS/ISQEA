@@ -6,8 +6,6 @@ package dk.aau.cs.indoorqueries.common.iDMatrix;
  *
  * @author Tiantian Liu
  */
-
-
 import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 
 import java.io.IOException;
@@ -23,7 +21,6 @@ public class IndexMatrixGen {
      * generate index matrix
      * @throws IOException
      */
-
     public void indexMatrixGen() throws IOException {
         calD2dDistMap();
         for (int i = 0; i < IndoorSpace.iDoors.size(); i++) {
@@ -47,7 +44,6 @@ public class IndexMatrixGen {
      * @param doorId
      * @param dist
      */
-
     public void addToIndexList(ArrayList<ArrayList<Double>> doorList, int doorId, double dist) {
         if (doorList.size() == 0) {
             doorList.add(new ArrayList<Double>(Arrays.asList((double) doorId, dist)));

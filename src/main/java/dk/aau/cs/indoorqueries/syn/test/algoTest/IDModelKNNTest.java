@@ -14,11 +14,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * dk.aau.cs.indoorqueries.test kNNQ
+ * test kNNQ using IDModel
  *
  * @author Tiantian Liu
  */
-
 public class IDModelKNNTest {
     public static void main(String args[]) throws IOException {
         DataGen dataGen = new DataGen();

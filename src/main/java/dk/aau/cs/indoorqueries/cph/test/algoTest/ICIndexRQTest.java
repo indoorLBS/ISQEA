@@ -18,8 +18,11 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-//import datagenerate.DataGen;
 
+/**
+ * test RQ using ICIndex
+ * @author Tiantian Liu
+ */
 public class ICIndexRQTest {
     private static <T extends Geometry> void print(Node<Integer, Box> node, int depth)
             throws FileNotFoundException {
@@ -106,30 +109,7 @@ public class ICIndexRQTest {
             if (count != 1) System.out.println("something wrong with count " + partition.getmID());
         }
 
-//        System.out.println("size = " + tree.size());
-//        System.out.println("entries = " + tree.countEntries());
-//        System.out.println("total boxes size = " + boxes.size());
-//        for (int i = 0; i < boxes.size(); i++) {
-//            System.out.println();
 //
-//            Box box = boxes.get(i);
-//            System.out.println("Box " + box.cornerToString());
-//
-//            TreeNode node = box.getmNode();
-//            System.out.println("Node " + node.cornerToString() + " id = " + node.getmID());
-//
-//            Partition partition = node.getmPartition();
-//            System.out.println("Partition " + partition.cornerToString3D() + " id = " + partition.getmID());
-//        }
-
-
-//        for (int depth = 0; depth <= 10; depth++) {
-//            System.out.println("depth");
-//            print(tree.root().get(), depth);
-//            //System.out.println("depth file written " + depth);
-//        }
-
-
         String fileInput = System.getProperty("user.dir") + "/source.r";
         Runtime.getRuntime().exec("/bin/sh R CMD BATCH " + fileInput);
         System.out.println("png");
@@ -139,17 +119,6 @@ public class ICIndexRQTest {
 
         dk.aau.cs.indoorqueries.common.indoorEntitity.Point ps = new dk.aau.cs.indoorqueries.common.indoorEntitity.Point(20, 200, 0);
         dk.aau.cs.indoorqueries.common.indoorEntitity.Point pt = new dk.aau.cs.indoorqueries.common.indoorEntitity.Point(250, 400, 0);
-
-//        for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
-//            IndoorObject ob = IndoorSpace.iObject.get(i);
-//            System.out.println("objectID: " + ob.getObjectId() + ", x: " + ob.getObjectX() + ", y: " + ob.getObjectY() + ", floor: " + ob.getoFloor() + ", parId: " + ob.getParId());
-//        }
-//
-//        for (int i = 0; i < 32; i++) {
-//            Partition par = IndoorSpace.iPartitions.get(i);
-//            ArrayList<Integer> parObjects = par.getmObjects();
-//            System.out.println("parId: " + i + " parObjects: " + parObjects);
-//        }
 
         ICIndex_RQ icIndex_rq = new ICIndex_RQ();
         icIndex_rq.iRQ(ps, 300, tree);

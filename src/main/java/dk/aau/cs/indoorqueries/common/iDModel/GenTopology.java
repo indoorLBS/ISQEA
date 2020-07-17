@@ -15,7 +15,6 @@ import java.util.Scanner;
  * generate topoloty of indoor space
  * @author Tiantian Liu
  */
-
 public class GenTopology {
     public static HashMap<Integer, HashMap<String, Double>> hallwayDistMatrix_floor = new HashMap<>();
     /**

@@ -20,6 +20,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+/**
+ * test RQ using ICIndex
+ * @author Tiantian Liu
+ */
 public class ICIndexRQTest {
     private static <T extends Geometry> void print(Node<Integer, Box> node, int depth)
             throws FileNotFoundException {

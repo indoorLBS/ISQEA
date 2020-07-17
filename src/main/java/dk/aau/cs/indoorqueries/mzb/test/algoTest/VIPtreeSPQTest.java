@@ -9,6 +9,10 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.MZBDataGenRead;
 
 import java.io.IOException;
 
+/**
+ * test SPQ using VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeSPQTest {
     public static void main(String[] arg) throws IOException {
         MZBDataGenRead dateGenReadMen = new MZBDataGenRead();

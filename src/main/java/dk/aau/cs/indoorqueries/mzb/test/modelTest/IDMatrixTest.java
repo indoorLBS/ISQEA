@@ -11,7 +11,6 @@ import java.io.IOException;
  *
  * @author Tiantian Liu
  */
-
 public class IDMatrixTest {
     public static void main(String arg[]) throws IOException {
         Runtime runtime = Runtime.getRuntime();

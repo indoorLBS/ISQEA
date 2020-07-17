@@ -4,6 +4,10 @@ import dk.aau.cs.indoorqueries.common.indoorEntitity.IndoorSpace;
 import dk.aau.cs.indoorqueries.common.indoorEntitity.Partition;
 import dk.aau.cs.indoorqueries.common.utilities.RoomType;
 
+/**
+ * classify partitons
+ * @author Tiantian Liu
+ */
 public class ClassifyPartition {
 
     // constructor

@@ -10,6 +10,10 @@ import dk.aau.cs.indoorqueries.syn.datagenerate.DataGen;
 
 import java.io.IOException;
 
+/**
+ * test SPQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeSPQTest {
     public static void main(String[] arg) throws IOException {
         long start = System.nanoTime();
@@ -36,6 +40,4 @@ public class IPtreeSPQTest {
         IPtree_SPQ iPtree_spq = new IPtree_SPQ();
         iPtree_spq.ipTreeSPQ(ps, pt, vipTree);
     }
-
-
 }

@@ -14,6 +14,10 @@ import dk.aau.cs.indoorqueries.mzb.datagenerate.ObjectGen;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * test KNNQ using VIP-Tree
+ * @author Tiantian Liu
+ */
 public class VIPtreeKNNTest {
     public static void main(String[] arg) throws IOException {
         MZBDataGenRead dateGenReadMen = new MZBDataGenRead();
@@ -37,17 +41,6 @@ public class VIPtreeKNNTest {
 
         Point ps = new Point(2, 12, 0);
         Point pt = new Point(15, 25, 13);
-
-        for (int i = 0; i < IndoorSpace.iObject.size(); i++) {
-            IndoorObject ob = IndoorSpace.iObject.get(i);
-            System.out.println("objectID: " + ob.getObjectId() + ", x: " + ob.getObjectX() + ", y: " + ob.getObjectY() + ", floor: " + ob.getoFloor() + ", parId: " + ob.getParId());
-        }
-
-        for (int i = 0; i < 32; i++) {
-            Partition par = IndoorSpace.iPartitions.get(i);
-            ArrayList<Integer> parObjects = par.getmObjects();
-            System.out.println("parId: " + i + " parObjects: " + parObjects);
-        }
 
         VIPtree_KNN iPtree_knn = new VIPtree_KNN();
         iPtree_knn.vipTreeKNN(ps, 3, vipTree);

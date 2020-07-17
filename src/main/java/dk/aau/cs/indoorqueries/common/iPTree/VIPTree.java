@@ -12,6 +12,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ * VIPTree
+ * @author Zijin Feng, Tiantian Liu
+ */
 public class VIPTree {
 
 	private final int M = 4;
@@ -73,7 +77,7 @@ public class VIPTree {
 	}
 
 	/**
-	 * create leaf node
+	 * create IP-Tree with precomputed info
 	 *
 	 * @throws IOException
 	 */
@@ -89,6 +93,10 @@ public class VIPTree {
 		readDM();
 	}
 
+	/**
+	 * create IP-Tree
+	 * @throws IOException
+	 */
 	public void initTreeConstruct() throws IOException {
 
 		if (DataGenConstant.dataset.equals("MZB")) {
@@ -106,12 +114,20 @@ public class VIPTree {
 		saveDM();
 	}
 
+	/**
+	 * create VIP-Tree with precomputed info
+	 * @throws IOException
+	 */
 	public void initVIPtree() throws IOException {
 		initTree();
 
 		readDMforVIPtree();
 	}
 
+	/**
+	 * create VIP-Tree
+	 * @throws IOException
+	 */
 	public void initVIPtreeConstruct() throws IOException {
 //		initTree();
 		initTreeConstruct();
@@ -121,6 +137,9 @@ public class VIPTree {
 		saveDMforVIPtree();
 	}
 
+	/**
+	 * create leaf nodes
+	 */
 	private void createLeafNodes_new() {
 		Level level_1 = new Level(1);
 		boolean[] isVisited = new boolean[IndoorSpace.iPartitions.size()];
@@ -410,6 +429,9 @@ public class VIPTree {
 
 	}
 
+	/**
+	 * create leaf nodes for MZB
+	 */
 	private void createLeafNodes_mzb() {
 		Level level_1 = new Level(1);
 		boolean[] isVisited = new boolean[IndoorSpace.iPartitions.size()];
@@ -638,401 +660,12 @@ public class VIPTree {
 	}
 
 
-	private void createLeafNodes() {
-		Level level_1 = new Level(1);
-		boolean[] isVisited = new boolean[IndoorSpace.iPartitions.size()];
-
-		// for each unvisited partition
-		for (int i = 0; i < IndoorSpace.iPartitions.size(); i++) {
-			Partition par = IndoorSpace.iPartitions.get(i);
-			int partID = par.getmID();
-
-			if (isVisited[partID])
-				continue;
-
-			boolean hasCrucial = false; // to record whether the node contained a crucial partition already
-
-			if (par.gettType() == RoomType.IMPASSABLE)
-				continue;
-			else if (par.gettType() == RoomType.SIMPLEPASS) {
-				hasCrucial = false;
-			} else if (par.gettType() == RoomType.CRUCIALPASS) {
-				hasCrucial = true;
-			} else
-				System.out.println("somethin wrong_TempTree_createLeafNode");
-
-			LeafNode leafNode = new LeafNode();
-
-			// partitions of the node
-			ArrayList<Integer> partitions = new ArrayList<Integer>();
-			// access door of the node
-			ArrayList<Integer> accessDoors = new ArrayList<Integer>();
-			// internal door of the node
-			ArrayList<Integer> internalDoors = new ArrayList<Integer>();
-
-			// add the partition itself to the node
-			partitions.add(par.getmID());
-			isVisited[par.getmID()] = true; // mark partition is visited
-			if (parNodeId.get(par.getmID()) == null) {
-				ArrayList<Integer> arr = new ArrayList<Integer>();
-				arr.add(leafNode.getNodeID());
-				parNodeId.put(par.getmID(), arr);
-			} else {
-				System.out.println("something wrong_TempTree_createLeafNodes_ exist parNodeID");
-			}
-
-			// get a set of adjacent partitions with doors
-			ArrayList<Integer> parts = par.getTopology().getP2PLeave();
-
-			for (int j = 0; j < parts.size(); j++) {
-				Partition parCon = IndoorSpace.iPartitions.get(parts.get(j));
-
-				if (isVisited[parts.get(j)])
-					continue; // this partition is already be put in another node, continue
-
-				// if crucial partition no exist yet
-				if (!hasCrucial) {
-					if (parCon.gettType() == RoomType.CRUCIALPASS) {
-						// check whether the partition have more than 1 adjacent crucial partitions
-						// add the crucial partition with greatest number of common doors
-
-						// for crucial partition, record the partID and index
-						int crucialPartID = -1;
-						int index = -1;
-
-						ArrayList<int[]> crucialPartitions = new ArrayList<int[]>();
-						for (int k = 0; k < parts.size(); k++) {
-							if (isVisited[parts.get(k)]) continue;
-							if (IndoorSpace.iPartitions.get(parts.get(k)).gettType() == RoomType.CRUCIALPASS) {
-								int[] temp = new int[2];
-								temp[0] = parts.get(k);
-								temp[1] = findCommonDoorNo(par.getmID(), parts.get(k));
-
-								crucialPartitions.add(temp);
-							}
-						}
-
-						// check which partition to merge
-						if (crucialPartitions.size() >= 2) {
-							String str = "";
-							for (int k = 0; k < crucialPartitions.size(); k++)
-								str += crucialPartitions.get(k)[0] + " ";
-							// System.out.print("more than 2 crucial partitons: " + str + "\t");
-
-							int maxNo = -1;
-							int maxID = -1;
-							int maxIndex = -1;
-
-							boolean moreThanTwoMax = false;
-
-							// merge with partition with greater number of common door
-							for (int k = 0; k < crucialPartitions.size(); k++) {
-								int[] temp = crucialPartitions.get(k);
-
-								// compare the common door number
-								if (temp[1] > maxNo) {
-									moreThanTwoMax = false;
-
-									maxNo = temp[1];
-									maxID = temp[0];
-									maxIndex = k;
-
-								} else if (temp[1] == maxNo) {
-									moreThanTwoMax = true;
-								}
-							}
-
-							// break the tie by prefer the partition on same floor
-							if (moreThanTwoMax) {
-								// System.out.println("more than two max crucial partition");
-
-								int floor_1 = par.getmFloor();
-
-								for (int k = 0; k < crucialPartitions.size(); k++) {
-									int[] temp = crucialPartitions.get(k);
-
-									if (temp[1] == maxNo
-											&& IndoorSpace.iPartitions.get(temp[0]).getmFloor() == floor_1) {
-										crucialPartID = temp[0];
-										index = k;
-									}
-								}
-							} else {
-								// System.out.println("1 max crucial partition: ID = " + crucialPartID + "
-								// index: " + index);
-								crucialPartID = maxID;
-								index = maxIndex;
-							}
-						}
-
-						hasCrucial = true;
-
-						if (crucialPartID == -1) {
-							// add the partition
-							partitions.add(parCon.getmID());
-
-							// mark this partition is visited
-							isVisited[parCon.getmID()] = true;
-							if (parNodeId.get(parCon.getmID()) == null) {
-								ArrayList<Integer> arr = new ArrayList<Integer>();
-								arr.add(leafNode.getNodeID());
-								parNodeId.put(parCon.getmID(), arr);
-							} else {
-								System.out.println("something wrong_TempTree_createLeafNodes_ exist parNodeID");
-							}
-
-							// System.out.println("1. add v" + parCon.getmID() + " add d" + doors.get(j));
-
-						} else {
-							// add the partition
-							partitions.add(crucialPartID);
-
-							// mark this partition is visited
-							isVisited[crucialPartID] = true;
-							if (parNodeId.get(crucialPartID) == null) {
-								ArrayList<Integer> arr = new ArrayList<Integer>();
-								arr.add(leafNode.getNodeID());
-								parNodeId.put(crucialPartID, arr);
-							} else {
-								System.out.println("something wrong_TempTree_createLeafNodes_ exist parNodeID");
-							}
-							// System.out.println("2. add v" + crucialPartID + " add d" + doors.get(index));
-						}
-					} else {
-						// add the partition
-						partitions.add(parCon.getmID());
-
-						// mark this partition is visited
-						isVisited[parCon.getmID()] = true;
-						if (parNodeId.get(parCon.getmID()) == null) {
-							ArrayList<Integer> arr = new ArrayList<Integer>();
-							arr.add(leafNode.getNodeID());
-							parNodeId.put(parCon.getmID(), arr);
-						} else {
-							System.out.println("something wrong_TempTree_createLeafNodes_ exist parNodeID");
-						}
-
-						// System.out.println("3. add v" + parCon.getmID() + " add d" + doors.get(j));
-					}
-
-				} else { // if crucial partition already exist
-					// if adjacent partition is not crucial partition, add this adjacent partition
-					// to the same node
-					if (parCon.gettType() != RoomType.CRUCIALPASS) {
-						// add the partition
-						partitions.add(parCon.getmID());
-
-						// mark this partition is visited
-						isVisited[parCon.getmID()] = true;
-						if (parNodeId.get(parCon.getmID()) == null) {
-							ArrayList<Integer> arr = new ArrayList<Integer>();
-							arr.add(leafNode.getNodeID());
-							parNodeId.put(parCon.getmID(), arr);
-						} else {
-							System.out.println("something wrong_TempTree_createLeafNodes_ exist parNodeID");
-						}
-
-						// System.out.println("4. add v" + parCon.getmID() + " add d" + doors.get(j));
-					}
-				}
-			}
-
-			ArrayList<Integer> canAccessDoors = new ArrayList<Integer>();
-
-			for (int j = 0; j < partitions.size(); j++) {
-				ArrayList<Integer> tempDoors = new ArrayList<Integer>();
-				tempDoors = IndoorSpace.iPartitions.get(partitions.get(j)).getmDoors();
-
-				for (int k = 0; k < tempDoors.size(); k++) {
-					if (!canAccessDoors.contains(tempDoors.get(k)))
-						canAccessDoors.add(tempDoors.get(k));
-				}
-			}
-
-			// System.out.println("candidate doors: " + canAccessDoors);
-
-			// for each candidate access door, check whether it does
-			for (int j = 0; j < canAccessDoors.size(); j++) {
-				Door door = IndoorSpace.iDoors.get(canAccessDoors.get(j));
-
-				if (isAccessDoor(door, partitions)) {
-					// System.out.println("check access. d" + door.getmID() + " is between " +
-					// door.getmPartitions() + " and " + partitions);
-					if (!accessDoors.contains(door.getmID()))
-						accessDoors.add(door.getmID());
-				} else {
-					if (!internalDoors.contains(door.getmID()))
-						internalDoors.add(door.getmID());
-				}
-			}
-
-			leafNode.setPartitions(partitions);
-			leafNode.setAccessDoors(accessDoors);
-			leafNode.setInternalDoors(internalDoors);
-
-			leafNode.setParentNodeID(root.getNodeID());
-
-			level_1.addNodeToLevel(leafNode);
-
-			// System.out.println("Node: " + leafNode);
-		}
-
-		// put each left partition to an adjacent node
-		for (int i = 0; i < IndoorSpace.iPartitions.size(); i++) {
-			if (!isVisited[i]) {
-				Partition partition = IndoorSpace.iPartitions.get(i);
-				ArrayList<Integer> parts = new ArrayList<Integer>();
-				ArrayList<Integer> doors = new ArrayList<Integer>();
-				parts = partition.getTopology().getP2PLeave();
-				doors = partition.getTopology().getP2DLeave();
-
-				if (parts.size() != doors.size())
-					System.out.println("something wrong_TempTree_createLeafNode_parts size != doors size2");
-
-				for (int j = 0; j < parts.size(); j++) {
-					if (!isVisited[parts.get(j)])
-						continue;
-
-					LeafNode leafNode = (LeafNode) level_1.getNode(parNodeId.get(parts.get(j)).get(0));
-
-					// mark as visited
-					isVisited[i] = true;
-
-					if (parNodeId.get(partition.getmID()) == null) {
-						ArrayList<Integer> arr = new ArrayList<Integer>();
-						arr.add(leafNode.getNodeID());
-						parNodeId.put(partition.getmID(), arr);
-					} else {
-						System.out.println("something wrong_TempTree_createLeafNodes_ exist parNodeID");
-					}
-
-					// System.out.println("before: " + leafNode.getmPartitions());
-					// add partition
-					leafNode.addPartition(partition.getmID());
-
-					// add internal doors and remove this door from access door
-					leafNode.addInternalDoor(doors.get(j));
-					leafNode.removeAccessDoor(doors.get(j));
-
-					// System.out.println("5. add v" + partition.getmID() + " add d" +
-					// doors.get(j));
-
-					// add access doors
-					ArrayList<Integer> canAccessDoors = new ArrayList<Integer>();
-					canAccessDoors = partition.getmDoors();
-
-					for (int k = 0; k < canAccessDoors.size(); k++) {
-						Door door = IndoorSpace.iDoors.get(canAccessDoors.get(k));
-
-						if (isAccessDoor(door, leafNode.getmPartitions())) {
-							// System.out.println("check access. d" + door.getmID() + " is between " +
-							// door.getmPartitions() + " and " + leafNode.getmPartitions());
-							if (!leafNode.getAccessDoors().contains(door.getmID()))
-								leafNode.addAccessDoor(door.getmID());
-						}
-					}
-
-					// update the leafNodes
-					level_1.updateNode(leafNode);
-
-					// System.out.println("Node: " + (LeafNode)
-					// level_1.getNode(parNodeId.get(parts.get(j))));
-
-					break;
-				}
-			}
-		}
-
-		for (int i = 0; i < IndoorSpace.iPartitions.size(); i++) {
-			if (!isVisited[i])
-				System.out.println("something wrong_TempTree_initTree_partition not merged");
-		}
-
-		// update the adjacent node size for each node
-		ArrayList<Node> nodes = new ArrayList<Node>();
-		nodes = level_1.getLevelNodes();
-
-		for (int i = 0; i < nodes.size(); i++) {
-			Node node_1 = nodes.get(i);
-
-			// System.out.println("Node: " + node_1);
-
-			// the access doors of the node
-			ArrayList<Integer> doors_1 = new ArrayList<Integer>();
-			doors_1 = node_1.getAccessDoors();
-
-			for (int j = 0; j < doors_1.size(); j++) {
-				ArrayList<Integer> parts = new ArrayList<Integer>();
-				parts = IndoorSpace.iDoors.get(doors_1.get(j)).getmPartitions();
-
-				// System.out.println("d" + doors_1.get(j) + " between " + parts);
-
-				for (int k = 0; k < parts.size(); k++) {
-					int nodeID = parNodeId.get(parts.get(k)).get(0);
-
-					if (nodeID != node_1.getNodeID()) {
-						// System.out.println("v" + parts.get(k) + " is in Node: " +
-						// level_1.getNode(nodeID));
-
-						// nodeID is id of adjacent node
-						level_1.levelNodes.get(i).addAdjacentNode(nodeID);
-						level_1.getNode(nodeID).addAdjacentNode(node_1.getNodeID());
-					}
-				}
-			}
-
-			// System.out.println(level_1.levelNodes.get(i) + " has " +
-			// level_1.levelNodes.get(i).getAdjacentNodeNo());
-		}
-
-		// add level_1 to levels
-		levels.put(level_1.levelId, level_1);
-
-//		ArrayList<Integer> parts = new ArrayList<Integer>();
-//		for (int i = 0; i < level_1.levelNodes.size(); i++) {
-//			for (int j = 0; j < level_1.levelNodes.get(i).getmPartitions().size(); j++) {
-//				if (!parts.contains(level_1.levelNodes.get(i).getmPartitions().get(j)))
-//					parts.add(level_1.levelNodes.get(i).getmPartitions().get(j));
-//			}
-//		}
-//
-//		System.out.println("parts size: " + parts.size());
-//
-//		for (int i = 0; i < IndoorSpace.iPartitions.size(); i++) {
-//			if (!parts.contains(IndoorSpace.iPartitions.get(i).getmID()))
-//				System.out.println("lack v" + IndoorSpace.iPartitions.get(i));
-//		}
-//
-//		// check door lack
-//		ArrayList<Integer> doors = new ArrayList<Integer>();
-//		for (int i = 0; i < level_1.levelNodes.size(); i++) {
-//			for (int j = 0; j < level_1.levelNodes.get(i).getAccessDoors().size(); j++) {
-//				if (!doors.contains(level_1.levelNodes.get(i).getAccessDoors().get(j)))
-//					doors.add(level_1.levelNodes.get(i).getAccessDoors().get(j));
-//			}
-//			for (int j = 0; j < level_1.levelNodes.get(i).getInternalDoors().size(); j++) {
-//				if (!doors.contains(level_1.levelNodes.get(i).getInternalDoors().get(j)))
-//					doors.add(level_1.levelNodes.get(i).getInternalDoors().get(j));
-//			}
-//		}
-//
-//		System.out.println("doors size: " + doors.size());
-//
-//		for (int i = 0; i < IndoorSpace.iDoors.size(); i++) {
-//			if (!doors.contains(IndoorSpace.iDoors.get(i).getmID()))
-//				System.out.println("lack d" + IndoorSpace.iDoors.get(i));
-//		}
-
-		DataGenConstant.leafNodeSize = level_1.getLevelNodes().size();
-		System.out.println("Leaf Node created. " + level_1.getLevelNodes().size());
-	}
-
+	/**
+	 * merge nodes
+	 */
 	private void mergeNodes() {
 		int k = 1;
 		int nodeSize = levels.get(1).getLevelNodes().size();
-
-//		for (Node n : levels.get(1).getLevelNodes()) System.out.println(n.getNodeID() + " = " + IndoorSpace.iNodes.get(n.getNodeID()).getNodeID() +
-//				" children: " + IndoorSpace.iNodes.get(n.getNodeID()).getmChildren());
 
 		int h = 5;
 
@@ -1057,46 +690,6 @@ public class VIPTree {
 			nodeSize = nodes.size();
 
 //			System.out.println("nodes size: " + nodeSize);
-
-//			// check partition lack
-//			ArrayList<Integer> parts = new ArrayList<Integer>();
-//			for (int i = 0; i < nodes.size(); i++) {
-//				for (int j = 0; j < nodes.get(i).getmPartitions().size(); j++) {
-//					if (!parts.contains(nodes.get(i).getmPartitions().get(j)))
-//						parts.add(nodes.get(i).getmPartitions().get(j));
-//				}
-//			}
-//
-//			System.out.println("parts size: " + parts.size());
-//
-//			for (int i = 0; i < IndoorSpace.iPartitions.size(); i++) {
-//				if (!parts.contains(IndoorSpace.iPartitions.get(i).getmID()))
-//					System.out.println("lack v" + IndoorSpace.iPartitions.get(i));
-//			}
-//
-//			// check door lack
-//			ArrayList<Integer> doors = new ArrayList<Integer>();
-//			for (int i = 0; i < nodes.size(); i++) {
-//				for (int j = 0; j < nodes.get(i).getAccessDoors().size(); j++) {
-//					if (!doors.contains(nodes.get(i).getAccessDoors().get(j)))
-//						doors.add(nodes.get(i).getAccessDoors().get(j));
-//				}
-//				for (int j = 0; j < nodes.get(i).getInternalDoors().size(); j++) {
-//					if (!doors.contains(nodes.get(i).getInternalDoors().get(j)))
-//						doors.add(nodes.get(i).getInternalDoors().get(j));
-//				}
-//			}
-//
-//			System.out.println("doors size: " + doors.size());
-//
-//			for (int i = 0; i < IndoorSpace.iDoors.size(); i++) {
-//				if (!doors.contains(IndoorSpace.iDoors.get(i).getmID()))
-//					System.out.println("lack d" + IndoorSpace.iDoors.get(i));
-//			}
-
-//			for (Node n : levels.get(k).getLevelNodes()) {
-//				System.out.println(n.getNodeID());
-//			}
 
 			ArrayList<Node> new_Nodes = new ArrayList<Node>();
 
@@ -1146,6 +739,14 @@ public class VIPTree {
 		this.root = levels.get(k).getLevelNodes().get(0);
 	}
 
+	/**
+	 * create next level
+	 * @param levelNodes
+	 * @param minDegree
+	 * @param maxDegree
+	 * @param k
+	 * @return
+	 */
 	private ArrayList<Node> createNextLevel(ArrayList<Node> levelNodes, int minDegree, int maxDegree, int k) {
 		ArrayList<Node> nextLevelNodes = new ArrayList<Node>();
 		MinHeap_Node<Node> Q = new MinHeap_Node<>();
@@ -1389,141 +990,6 @@ public class VIPTree {
 		return nextLevelNodes;
 	}
 
-//	private void constructCube_new() {
-//		// for leaf nodes
-//		for (Node node : levels.get(1).getLevelNodes()) {
-//			node.constructDistCube(1, false);
-////			return;
-//		}
-//
-//		// for non-leaf nodes
-//		for (int level : levels.keySet()) {
-//			if (level == 1) continue;
-//
-//			for (Node node : levels.get(level).getLevelNodes()) {
-//				node.constructDistCube(level, false);
-////				return;
-//			}
-//		}
-//	}
-
-//	private void constructCube_read() throws IOException {
-//		Path input = Paths.get(inputPath);
-//		Scanner scanner = new Scanner(input);
-//
-//		boolean first = true;
-//
-//		Node node = null;
-//		Node preNode = null;
-//		int door_i = -1;
-//		int door_j = -1;
-//
-//		boolean newNode = false;
-//		boolean newDoorPair = false;
-//
-//		ArrayList<TimeInterval> lifeSpan = new ArrayList<TimeInterval>();
-//
-//		while(scanner.hasNextLine()){
-//			String line = scanner.nextLine();
-////			System.out.println("read " + line);
-//
-//			if (line.equals("next")) {
-//				newNode = true;
-////				System.out.println("====================================");
-//				continue;
-//			} else if (line.equals("===")) {
-//				newDoorPair = true;
-////				System.out.println("===");
-//				continue;
-//			}
-//
-//			if (newNode) {
-//				newNode = false;
-////				System.out.println("newNode to " + newNode);
-//
-//				// read the node id
-//				String[] temps = line.split("\t");
-////				System.out.println(temps.length);
-//				int nodeID = Integer.parseInt(temps[0]);
-//				int level = Integer.parseInt(temps[1]);
-//
-//				// find the node
-//				node = this.getNode(nodeID);
-//				if (first) preNode = node;
-////				System.out.println(node);
-//
-//				node.constructDistCube(level, true);
-//				if (!HSMDataGenConstant.generateAll) {
-//					if  (node.getType().equals("LeafNode")) {
-//						node.getDistanceCube().setAccessDoors(node.getAccessDoors());
-//						node.getDistanceCube().setInternalDoors(node.getInternalDoors());
-//						node.getDistanceCube().setAllDoors();
-//					} else {
-//						node.getDistanceCube().setAccessDoors(node.getAccessDoors());
-////						node.getDistanceCube().setInternalDoors(node.getInternalDoors());
-//						node.getDistanceCube().setAllDoors();
-//					}
-//				} else {
-//					if  (node.getType().equals("LeafNode")) {
-//						node.getDistanceCube().setAccessDoors(node.getAccessDoors());
-//						node.getDistanceCube().setInternalDoors(node.getInternalDoors());
-//						node.getDistanceCube().setAllDoors();
-//					} else {
-//						node.getDistanceCube().setAccessDoors(node.getAccessDoors());
-//						node.getDistanceCube().setInternalDoors(node.getInternalDoors());
-//						node.getDistanceCube().setAllDoors();
-//					}
-//				}
-//
-//				node.getDistanceCube().newInfos();
-//
-//				continue;
-//			}
-//
-//			if (newDoorPair) {
-//				newDoorPair = false;
-////				System.out.println("newDoorPair to " + newDoorPair);
-//
-//				if (!first) {
-//					preNode.getDistanceCube().addLifeSpan(door_i, door_j, lifeSpan);
-//					preNode = node;
-//				} else first = false;
-//
-//				// read the door id
-//				String[] temps = line.split("-");
-//				door_i = Integer.parseInt(temps[0]);
-//				door_j = Integer.parseInt(temps[1]);
-//
-////				System.out.println("d" + door_i + "-d" + door_j);
-//
-//				lifeSpan = new ArrayList<TimeInterval>();
-//
-//				continue;
-//			}
-//
-//			// read content
-//			if (node != null && door_i != -1 && door_j != -1) {
-//				String[] temps = line.split(";");
-////				System.out.println(line);
-//				String path = temps[0];
-//				double distance = Double.parseDouble(temps[1]);
-//				double time1 = Double.parseDouble(temps[2]);
-//				double time2 = Double.parseDouble(temps[3]);
-//
-////				System.out.println("path: " + path + " distance: " + distance + " time1: " + time1 + " time2: " + time2);
-//
-//				TimeInterval interval = new TimeInterval(path, distance, time1, time2);
-//				lifeSpan.add(interval);
-//			} else {
-//				System.out.println("something wrong_TempTree_constructCube_read");
-//			}
-//		}
-//
-//		preNode.getDistanceCube().addLifeSpan(door_i, door_j, lifeSpan);
-//
-//		System.out.println("VIPTree loaded");
-//	}
-
 	/**
 	 * construct distance matrix for leaf node
 	 */
@@ -1570,6 +1036,12 @@ public class VIPTree {
 		System.out.println("distance matrix for leaf nodes is finished");
 	}
 
+	/**
+	 * To see whether two doors are in a same partition
+	 * @param d1
+	 * @param d2
+	 * @return
+	 */
 	public int inSamePartition(int d1, int d2) {
 		Door door1 = IndoorSpace.iDoors.get(d1);
 		ArrayList<Integer> partitions1 = door1.getmPartitions();
@@ -1636,6 +1108,11 @@ public class VIPTree {
 		System.out.println("distance matrix for nonleaf nodes is finished");
 	}
 
+	/**
+	 * convert path
+	 * @param distPath
+	 * @return
+	 */
 	public String convertPath(String distPath) {
 		String result = "";
 		String[] distPathArr = distPath.split("\t");
@@ -1649,6 +1126,13 @@ public class VIPTree {
 		return result;
 	}
 
+	/**
+	 * change array to string
+	 * @param arr
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	public String arrToString(String[] arr, int start, int end) {
 		String result = "";
 		for (int i = start; i <= end; i++) {
@@ -1856,6 +1340,12 @@ public class VIPTree {
 		return result;
 	}
 
+	/**
+	 * get index of a node
+	 * @param id
+	 * @param list
+	 * @return
+	 */
 	private int getIndex(int id, ArrayList<Node> list) {
 		for (int i = 0; i < list.size(); i++) {
 			// System.out.println(list.get(i) + " " + list.get(i).getNodeID());
@@ -1865,45 +1355,6 @@ public class VIPTree {
 		}
 
 		return -1;
-	}
-
-	private void leafNodeStatics() {
-		int size = 200;
-
-		int[] partitionNo = new int[size];
-		int[] accessDoorNo = new int[size];
-		int[] internalDoorNo = new int[size];
-
-		ArrayList<Node> nodes = new ArrayList<Node>();
-		nodes = levels.get(1).getLevelNodes();
-
-		for (int i = 0; i < nodes.size(); i++) {
-			Node node = nodes.get(i);
-
-			partitionNo[((LeafNode) node).getmPartitions().size()]++;
-			accessDoorNo[node.getAccessDoors().size()]++;
-			internalDoorNo[node.getInternalDoors().size()]++;
-		}
-
-		for (int i = 0; i < size; i++) {
-			System.out.println(i + "\t" + partitionNo[i] + "\t" + accessDoorNo[i] + "\t" + internalDoorNo[i]);
-		}
-	}
-
-	public String asString(Node node, String margin) {
-		StringBuilder s = new StringBuilder();
-		s.append(margin);
-		s.append("Node " + node.getNodeID() + " height:" + node.getHeight() + " parent: " + node.getParentNodeID()
-				+ " children: " + node.getmChildren());
-		s.append("\n");
-
-		if (node.getType() == "NonLeafNode") {
-			for (int nID : node.getmChildren()) {
-				s.append(asString(getNode(nID), margin + "\t"));
-			}
-		}
-
-		return s.toString();
 	}
 
 	public int height() {
@@ -2157,6 +1608,12 @@ public class VIPTree {
 
 	}
 
+	/**
+	 * convert object distance
+	 * @param accDoors
+	 * @param objectDist_obKey
+	 * @return
+	 */
 	public HashMap<Integer, ArrayList<ArrayList<Double>>> convertObjectDist(ArrayList<Integer> accDoors, HashMap<Integer, ArrayList<ArrayList<Double>>> objectDist_obKey) {
 		HashMap<Integer, ArrayList<ArrayList<Double>>> objectDist_accKey = new HashMap<>();
 		for (int i = 0; i < accDoors.size(); i++) {
@@ -2183,6 +1640,11 @@ public class VIPTree {
 		return objectDist_accKey;
 	}
 
+	/**
+	 * add object distance to sorted arraylist
+	 * @param obDist
+	 * @param obDists
+	 */
 	public void addToArrayListSorted(ArrayList<Double> obDist, ArrayList<ArrayList<Double>> obDists) {
 		if (obDists.size() == 0) {
 			obDists.add(obDist);
@@ -2221,6 +1683,14 @@ public class VIPTree {
 		}
 	}
 
+	/**
+	 * get min distance of an object to access doors
+	 * @param obId
+	 * @param node
+	 * @param leaveDoors
+	 * @param accDoors
+	 * @return
+	 */
 	public ArrayList<ArrayList<Double>> getMinDistObjectToAcc(int obId, Node node, ArrayList<Integer> leaveDoors, ArrayList<Integer> accDoors) {
 		ArrayList<ArrayList<Double>> objectDist = new ArrayList<>();
 
@@ -2262,6 +1732,9 @@ public class VIPTree {
 		return dist;
 	}
 
+	/**
+	 * calculate distance matrix for VIP-Tree
+	 */
 	public void constructDMforVIPtree() {
 		ArrayList<Node> leafNodes = this.getNodes(1);
 		for (int i = 0; i < leafNodes.size(); i++) {
@@ -2281,6 +1754,9 @@ public class VIPTree {
 		}
 	}
 
+	/**
+	 * save distance matrix for VIP-Tree
+	 */
 	public void saveDMforVIPtree() {
 		String result = "";
 
@@ -2309,6 +1785,10 @@ public class VIPTree {
 		}
 	}
 
+	/**
+	 * read distance matrix of VIP-Tree
+	 * @throws IOException
+	 */
 	public void readDMforVIPtree() throws IOException {
 		String vipFile = System.getProperty("user.dir") + "/VIPTreeDist/" + DataGenConstant.dataset + "/DM_VIP_level_" + 1 + "_floor_" + DataGenConstant.nFloor + "_dataType_" + DataGenConstant.dataType + "_diType_" + DataGenConstant.divisionType + ".txt";
 
@@ -2338,6 +1818,13 @@ public class VIPTree {
 
 	}
 
+	/**
+	 * calculte distance between a door to ancesstor doors
+	 * @param doorId
+	 * @param sNode
+	 * @param n
+	 * @return
+	 */
 	public HashMap<String, String> doorToAncestorDoorDist(int doorId, Node sNode, Node n) {
 		Node childNode = sNode;
 		Node parentNode = this.getNode(childNode.getParentNodeID());

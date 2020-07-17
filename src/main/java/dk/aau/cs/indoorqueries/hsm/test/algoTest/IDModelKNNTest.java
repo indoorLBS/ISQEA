@@ -12,14 +12,11 @@ import dk.aau.cs.indoorqueries.hsm.datagenerate.ObjectGen;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//import datagenerate.DataGen;
-
 /**
- * test kNNQ
+ * test kNNQ using IDModel
  *
  * @author Tiantian Liu
  */
-
 public class IDModelKNNTest {
     public static void main(String args[]) throws IOException {
         HSMDataGenRead dateGenReadMen = new HSMDataGenRead();

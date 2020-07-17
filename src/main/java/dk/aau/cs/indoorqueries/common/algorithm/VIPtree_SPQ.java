@@ -161,7 +161,6 @@ public class VIPtree_SPQ {
      * @param tree
      * @return
      */
-
     public ArrayList<Node> commonAncestor(Node leaf_s, Node leaf_e, VIPTree tree) {
         ArrayList<Node> result = new ArrayList<Node>();
         int temp_sId = leaf_s.getNodeID();
@@ -296,6 +295,4 @@ public class VIPtree_SPQ {
         }
         return result;
     }
-
-
 }

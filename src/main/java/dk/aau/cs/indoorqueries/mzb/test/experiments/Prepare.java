@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * preparation for expriments
+ * @author Tiantian Liu
+ */
 public class Prepare {
     ArrayList<ArrayList<Point>> pointPair = new ArrayList<>();
 

@@ -17,7 +17,6 @@ import static org.apache.commons.lang3.math.NumberUtils.min;
  * Algorithm of processing rq using ICIndex
  * @author Tiantian Liu
  */
-
 public class ICIndex_RQ {
     public static ArrayList<Integer> R_objects = new ArrayList<>();
     public static ArrayList<Integer> R_partitions = new ArrayList<>();
@@ -584,7 +583,6 @@ public class ICIndex_RQ {
      * @param q
      * @param r
      */
-
     public ArrayList<Integer> rangeSearch(ArrayList<Integer> objects, Point q, double r) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {
@@ -604,7 +602,6 @@ public class ICIndex_RQ {
      * @param r
      * @param R
      */
-
     public ArrayList<Integer> rangeSearch(ArrayList<Integer> objects, Door d, double r, ArrayList<Integer> R) {
         ArrayList<Integer> canObjects = new ArrayList<>(); // candidate objects
         for (int i = 0; i < objects.size(); i++) {

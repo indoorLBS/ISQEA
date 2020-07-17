@@ -11,8 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//import datagenerate.DataGen;
 
+/**
+ * test KNNQ using IDMatrix
+ * @author Tiantian Liu
+ */
 public class IDMatrixKNNTest {
     public static void main(String[] arg) throws IOException {
         Runtime runtime = Runtime.getRuntime();

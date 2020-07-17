@@ -1,4 +1,7 @@
 .idea/
 target/
-/*.txt
+/distanceMatrix/*.txt
+/VIPTreeDist/*.txt
+/objects/*.txt
+*.txt
 *.iml

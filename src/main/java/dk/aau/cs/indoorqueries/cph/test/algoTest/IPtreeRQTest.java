@@ -10,8 +10,10 @@ import dk.aau.cs.indoorqueries.cph.datagenerate.ObjectGen;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
+/**
+ * test RQ using IP-Tree
+ * @author Tiantian Liu
+ */
 public class IPtreeRQTest {
     public static void main(String[] arg) throws IOException {
         CPHDataGenRead dateGenReadMen = new CPHDataGenRead();

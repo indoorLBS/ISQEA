@@ -7,14 +7,11 @@ import dk.aau.cs.indoorqueries.cph.datagenerate.CPHDataGenRead;
 
 import java.io.IOException;
 
-//import datagenerate.DataGen;
-
 /**
- * test IDModelSPQ
+ * test SPQ using IDModel
  *
  * @author Tiantianliu
  */
-
 public class IDModelSPQTest {
     public static void main(String args[]) throws IOException {
 //        DataGen dataGen = new DataGen();

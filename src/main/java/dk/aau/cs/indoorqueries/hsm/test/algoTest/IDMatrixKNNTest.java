@@ -1,7 +1,9 @@
 package dk.aau.cs.indoorqueries.hsm.test.algoTest;
 
-//import datagenerate.DataGen;
-
+/**
+ * test KNNQ using IDMatrix
+ * @author Tiantian Liu
+ */
 import dk.aau.cs.indoorqueries.common.iDMatrix.IndexMatrixGen;
 import dk.aau.cs.indoorqueries.common.iDModel.GenTopology;
 import dk.aau.cs.indoorqueries.hsm.datagenerate.HSMDataGenRead;

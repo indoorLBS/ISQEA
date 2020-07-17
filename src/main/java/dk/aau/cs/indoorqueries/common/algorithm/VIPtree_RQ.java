@@ -125,7 +125,6 @@ public class VIPtree_RQ {
      * @param pointToAllAncesDoorsDist
      * @return
      */
-
     public HashMap<Integer, Double> getDistPointToNodeVIP(Point point, int qPartitionId, Node node, VIPTree tree, int caseNum, HashMap<Integer, HashMap<Integer, Double>> pointToAllAncesDoorsDist) {
         HashMap<Integer, Double> result = new HashMap<>();
         ArrayList<Integer> partitions = node.getmPartitions();
@@ -607,8 +606,6 @@ public class VIPtree_RQ {
             doorToChildNode = doorToParNode;
 
         }
-
         return result;
     }
-
 }
