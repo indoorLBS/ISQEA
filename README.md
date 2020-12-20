@@ -39,7 +39,7 @@ The sketches are shown as below.
 ![floorplan images](resource/dataset_floorplan.png)
 
 ### Query instance
-Queries instances for different datasets and query types could be seen in File Resource.
+Query instances for different datasets and query types could be seen in File Resource.
 
 ### Objects
 The objects information for different datasets could also be found in File Resource.
