@@ -105,4 +105,5 @@ The authors would like to thank Zijin Feng for providing the relevant code.
 
 You are welcome to use our code and datasets for research use, but please do not forget to cite our paper :).
 
-Tiantian Liu, Huan Li, Hua Lu, Muhammad Aamir Cheema, Lidan Shou. Indoor Spatial Queries: Modeling, Indexing, and Processing [Experiment & Analysis]. Submitted to EDBT, 12 pages.
+Tiantian Liu, Huan Li, Hua Lu, Muhammad Aamir Cheema, and Lidan Shou. 2020. An Experimental Analysis of Indoor Spatial Queries: Modeling, Indexing,
+and Processing. arXiv:2010.03910
