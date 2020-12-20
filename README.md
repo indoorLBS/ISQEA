@@ -41,6 +41,9 @@ The sketches are shown as below.
 ### Query instance
 Queries instances for different datasets and query types could be seen in File Resource.
 
+### Objects
+The objects information for different datasets could also be found in File Resource.
+
 ### Code structure
 
 - dk.aau.cs.indoorqueries
