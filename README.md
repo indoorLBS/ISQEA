@@ -99,7 +99,6 @@ We will continue to maintain this project.
 ### Acknowledgement
 
 This work is supported by IRFD (No. 8022-00366B) and ARC (No. FT180100140 and DP180103411).
-Huan Li is partially supported by the EU Marie Skłodowska-Curie grant (agreement No. 882232).
 The authors would like to thank Zijin Feng for providing the relevant code.
 
 ### Citation
