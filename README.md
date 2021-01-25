@@ -91,6 +91,7 @@ Other dependencies can be found in the `pom.xml` file.
 
 1. [Tiantian Liu](https://vbn.aau.dk/en/persons/145323) (liutt@cs.aau.dk)
 2. [Huan Li](http://people.cs.aau.dk/~lihuan/) (lihuan@cs.aau.dk)
+3. [Hua Lu](http://luhua.ruc.dk) (luhua@ruc.dk)
 
 Please feel free to contact us if any issues. You are also welcome to open an issue through GitHub.
 We will continue to maintain this project.
