@@ -1,6 +1,6 @@
 ### Introduction
 
-This is the code of a paper entitled "An Experimental Analysis of Indoor Spatial Queries: Modeling, Indexing, and Processing".
+This is the code of a paper entitled "Indoor Spatial Queries: Modeling, Indexing, and Processing".
 
 The work refers to an extensive experimental evaluation of five indoor space 
 model/indexes that support four typical indoor spatial queries, 
